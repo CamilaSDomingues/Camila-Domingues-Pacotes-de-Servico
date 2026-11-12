@@ -10,9 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-/* =========================================================
-   01. VARIÁVEIS
+
+  /* =========================================================
+   01. VARIÁVEIS E RESET
 ========================================================= */
+
 :root {
   --paper: #eee7df;
   --paper-light: #f8f5f1;
@@ -23,29 +25,32 @@
   --accent-dark: #594638;
   --line: rgba(54, 43, 35, .16);
   --shadow: 0 18px 55px rgba(54, 43, 35, .09);
+
   --mono: "DM Mono", monospace;
   --sans: "DM Sans", sans-serif;
   --serif: "Playfair Display", serif;
-  --ease: cubic-bezier(.2,.7,.2,1);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
 }
-/* =========================================================
-   02. RESET
-========================================================= */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 90px;
 }
+
 body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
   overflow-x: hidden;
 }
+
 body::before {
   content: "";
   position: fixed;
@@ -55,25 +60,32 @@ body::before {
   opacity: .12;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
 }
-img, video {
+
+img,
+video {
   display: block;
   max-width: 100%;
 }
+
 a {
   color: inherit;
   text-decoration: none;
 }
+
 button {
   font: inherit;
 }
+
 ::selection {
   color: var(--paper-light);
   background: var(--accent-dark);
 }
+
 .container {
   width: min(1320px, calc(100% - 80px));
-  margin: 0 auto;
+  margin-inline: auto;
 }
+
 .eyebrow {
   display: inline-block;
   color: var(--muted);
@@ -81,49 +93,53 @@ button {
   letter-spacing: .15em;
   text-transform: uppercase;
 }
+
 .serif {
   font-family: var(--serif);
 }
+
 .accent {
   color: var(--accent);
 }
+
 /* =========================================================
-   03. ANIMAÇÕES
+   02. ANIMAÇÕES
 ========================================================= */
+
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-@keyframes rotateStamp {
-  from { transform: rotate(-18deg); }
-  to { transform: rotate(342deg); }
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);
-  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  transition:
+    opacity .8s var(--ease),
+    transform .8s var(--ease);
 }
+
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
+
 /* =========================================================
-   04. CABEÇALHO
+   03. CABEÇALHO
 ========================================================= */
+
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -131,13 +147,16 @@ button {
   min-height: 82px;
   border-bottom: 1px solid var(--line);
 }
+
 .brand {
   font: 500 26px var(--serif);
   letter-spacing: -.07em;
 }
+
 .brand span {
   color: var(--accent);
 }
+
 .top-meta {
   display: flex;
   align-items: center;
@@ -147,32 +166,38 @@ button {
   letter-spacing: .12em;
   text-transform: uppercase;
 }
+
 .status {
   display: flex;
   align-items: center;
   gap: 9px;
 }
+
 .status::before {
   content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #819477;
-  box-shadow: 0 0 0 4px rgba(129,148,119,.13);
+  box-shadow: 0 0 0 4px rgba(129, 148, 119, .13);
 }
+
 /* =========================================================
-   05. HERO
+   04. HERO
 ========================================================= */
+
 .hero {
   position: relative;
   padding: clamp(95px, 12vw, 165px) 0 115px;
 }
+
 .hero-grid {
   display: grid;
   grid-template-columns: 1.3fr .7fr;
   align-items: end;
   gap: 70px;
 }
+
 .hero h1 {
   margin-top: 28px;
   font-size: clamp(76px, 11.5vw, 158px);
@@ -181,11 +206,13 @@ button {
   font-weight: 500;
   animation: fadeUp 1s var(--ease) both;
 }
+
 .hero h1 em {
   font-family: var(--serif);
   font-weight: 400;
   letter-spacing: -.085em;
 }
+
 .hero-side {
   max-width: 340px;
   margin-bottom: 8px;
@@ -193,12 +220,14 @@ button {
   border-left: 1px solid var(--line);
   animation: fadeUp 1s .2s var(--ease) both;
 }
+
 .hero-side p {
   color: var(--muted);
   font-size: 14px;
   line-height: 1.9;
   margin-bottom: 30px;
 }
+
 .scroll-link {
   display: inline-flex;
   align-items: center;
@@ -207,6 +236,7 @@ button {
   letter-spacing: .12em;
   text-transform: uppercase;
 }
+
 .scroll-link span {
   width: 34px;
   height: 34px;
@@ -217,11 +247,13 @@ button {
   font-size: 16px;
   transition: .35s var(--ease);
 }
+
 .scroll-link:hover span {
   color: var(--paper-light);
   background: var(--ink);
   transform: rotate(45deg);
 }
+
 .hero-stamp {
   position: absolute;
   top: 65px;
@@ -238,15 +270,18 @@ button {
   letter-spacing: .08em;
   transform: rotate(-15deg);
 }
+
 .hero-stamp::after {
   content: "✳";
   position: absolute;
   font-size: 24px;
   color: var(--accent);
 }
+
 /* =========================================================
-   06. APRESENTAÇÃO DA CAMILA
+   05. APRESENTAÇÃO DA CAMILA
 ========================================================= */
+
 .owner-section {
   display: grid;
   grid-template-columns: .9fr 1.1fr;
@@ -254,20 +289,24 @@ button {
   gap: clamp(55px, 9vw, 130px);
   padding: 30px 0 145px;
 }
+
 .owner-visual {
   position: relative;
   max-width: 490px;
   padding: 0 28px 28px 0;
 }
+
 .owner-frame {
   position: absolute;
   inset: 28px 0 0 28px;
   border: 1px solid var(--accent);
   transition: transform .6s var(--ease);
 }
+
 .owner-visual:hover .owner-frame {
   transform: translate(8px, 8px);
 }
+
 .owner-photo {
   position: relative;
   z-index: 1;
@@ -275,26 +314,28 @@ button {
   background: var(--paper-dark);
   box-shadow: var(--shadow);
 }
+
 .owner-photo img {
   width: 100%;
   height: auto;
-  aspect-ratio: auto;
   object-fit: contain;
-  object-position: center;
   filter: saturate(.78) sepia(.08);
   transition: transform .9s var(--ease), filter .6s;
 }
+
 .owner-visual:hover .owner-photo img {
   transform: scale(1.035);
   filter: saturate(.95);
 }
+
 .owner-photo::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(180deg, transparent 65%, rgba(30,22,18,.3));
+  background: linear-gradient(180deg, transparent 65%, rgba(30, 22, 18, .3));
 }
+
 .owner-caption {
   position: absolute;
   z-index: 2;
@@ -305,6 +346,7 @@ button {
   letter-spacing: .13em;
   text-transform: uppercase;
 }
+
 .owner-seal {
   position: absolute;
   z-index: 3;
@@ -321,26 +363,32 @@ button {
   font: italic 28px var(--serif);
   transition: transform .5s var(--ease);
 }
+
 .owner-visual:hover .owner-seal {
   transform: rotate(12deg);
 }
+
 .owner-copy {
   max-width: 590px;
 }
+
 .owner-copy h2 {
   margin: 24px 0 28px;
   font: 500 clamp(58px, 7vw, 96px)/.91 var(--serif);
   letter-spacing: -.08em;
 }
+
 .owner-copy h2 em {
   color: var(--accent);
   font-weight: 400;
 }
+
 .owner-lead {
   max-width: 470px;
   margin-bottom: 17px;
   font: 500 clamp(18px, 2vw, 23px)/1.5 var(--serif);
 }
+
 .owner-description {
   max-width: 465px;
   margin-bottom: 30px;
@@ -348,12 +396,15 @@ button {
   font-size: 13px;
   line-height: 1.95;
 }
+
 /* =========================================================
-   07. INTRODUÇÃO DOS PACOTES
+   06. INTRODUÇÃO DOS SERVIÇOS
 ========================================================= */
+
 .services-section {
   padding-bottom: 65px;
 }
+
 .section-heading {
   display: flex;
   align-items: end;
@@ -362,29 +413,31 @@ button {
   padding: 30px 0 38px;
   border-top: 1px solid var(--line);
 }
+
 .section-heading h2 {
   margin-top: 13px;
   font: 500 clamp(38px, 5vw, 64px)/.95 var(--serif);
   letter-spacing: -.065em;
 }
+
 .section-heading p {
   max-width: 330px;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.85;
 }
+
 /* =========================================================
-   08. CARDS DOS PACOTES
-   Estrutura vertical: um pacote por linha.
-   Texto à esquerda, imagem proporcional à direita.
+   07. CARDS DOS PACOTES
 ========================================================= */
+
 .package-grid {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
   gap: 24px;
   width: 100%;
 }
+
 .package-card {
   position: relative;
   display: block;
@@ -400,129 +453,152 @@ button {
     border-color .35s ease,
     background .35s ease;
 }
+
 .package-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-3px);
   border-color: rgba(152, 123, 103, .45);
   background: var(--paper-light);
   box-shadow: 0 20px 45px rgba(54, 43, 35, .09);
 }
+
 .package-card[open] {
   background: var(--paper-light);
   border-color: rgba(152, 123, 103, .5);
   box-shadow: var(--shadow);
 }
+
+/* =========================================================
+   08. CABEÇALHO INTERNO DO CARD
+========================================================= */
+
 .package-card > summary {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(120px, 190px);
+
+  /*
+    Coluna principal para os textos.
+    Coluna menor reservada para o botão (+).
+  */
+  grid-template-columns: minmax(0, 1fr) 58px;
+
   grid-template-areas:
-    "top top"
-    "title image"
-    "description image";
+    "top toggle"
+    "title toggle"
+    "description toggle";
+
   align-items: center;
-  column-gap: 30px;
+  column-gap: 20px;
   row-gap: 8px;
-  min-height: 230px;
-  padding: 25px 30px;
+
+  min-height: 205px;
+  padding: 28px 30px;
+
   cursor: pointer;
   list-style: none;
   outline: none;
 }
+
 .package-card > summary::-webkit-details-marker {
   display: none;
 }
+
 .package-card > summary::marker {
   content: "";
 }
+
 .card-top {
   grid-area: top;
   display: flex;
   align-items: center;
   gap: 13px;
   min-width: 0;
-  padding-right: 54px;
 }
+
 .card-number {
   color: var(--accent-dark);
   font: 9px var(--mono);
   letter-spacing: .12em;
 }
+
 .card-tag {
   color: var(--muted);
   font: 8px var(--mono);
   letter-spacing: .13em;
   text-transform: uppercase;
 }
+
 .card-title-area {
   grid-area: title;
   display: flex;
   align-items: center;
   min-width: 0;
-  padding: 10px 54px 4px 0;
+  padding: 8px 0 4px;
 }
+
 .card-title-area h3 {
   max-width: 760px;
   color: var(--ink);
   font: 500 clamp(25px, 3vw, 39px)/1.08 var(--serif);
   letter-spacing: -.045em;
 }
+
+/*
+  As imagens de apresentação não aparecem
+  no card fechado.
+*/
+.card-image {
+  display: none !important;
+}
+
+/* =========================================================
+   09. BOTÃO (+)
+========================================================= */
+
 .expand-icon {
   position: absolute;
-  top: 22px;
-  right: 25px;
+  top: 50%;
+  right: 30px;
+
   display: grid;
   place-items: center;
-  width: 36px;
-  height: 36px;
+
+  width: 44px;
+  height: 44px;
+
   border: 1px solid var(--line);
   border-radius: 50%;
+
   color: var(--accent-dark);
   background: transparent;
-  font: 20px/1 var(--sans);
+
+  font: 24px/1 var(--sans);
+
+  transform: translateY(-50%);
+
   transition:
     color .3s ease,
     background .3s ease,
     border-color .3s ease,
     transform .4s var(--ease);
 }
+
 .package-card:hover .expand-icon {
   border-color: var(--accent-dark);
   color: var(--paper-light);
   background: var(--accent-dark);
 }
+
 .package-card[open] .expand-icon {
-  transform: rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
   color: var(--paper-light);
   background: var(--accent-dark);
   border-color: var(--accent-dark);
 }
-.card-image {
-  grid-area: image;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  justify-self: end;
-  width: 100%;
-  max-width: 190px;
-  max-height: 190px;
-  min-width: 0;
-  overflow: hidden;
-  background: transparent;
-}
-.card-image img {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 190px;
-  object-fit: contain;
-  object-position: center;
-  transition: transform .65s var(--ease), filter .4s ease;
-}
-.package-card:hover .card-image img {
-  transform: scale(1.035);
-  filter: saturate(1.04);
-}
+
+/* =========================================================
+   10. RESUMO DO CARD
+========================================================= */
+
 .card-summary {
   grid-area: description;
   display: flex;
@@ -532,12 +608,14 @@ button {
   min-width: 0;
   padding: 4px 0 8px;
 }
+
 .card-summary p {
-  max-width: 590px;
+  max-width: 650px;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.85;
 }
+
 .card-summary .view-label {
   flex-shrink: 0;
   color: var(--accent-dark);
@@ -547,53 +625,62 @@ button {
   white-space: nowrap;
   transition: transform .3s ease;
 }
+
 .package-card:hover .view-label {
   transform: translateX(4px);
 }
-/* =========================================================
-   08.1. ESTADO DE FOCO E INTERAÇÃO DOS CARDS
-========================================================= */
+
 .package-card > summary:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: -4px;
 }
+
 .package-card[open] > summary {
   border-bottom: 1px solid rgba(54, 43, 35, .08);
 }
+
 /* =========================================================
-   09. CONTEÚDO EXPANSÍVEL
+   11. CONTEÚDO EXPANSÍVEL
 ========================================================= */
+
 .package-content {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows .55s var(--ease);
 }
+
 .package-card[open] .package-content {
   grid-template-rows: 1fr;
 }
+
 .package-content-inner {
   overflow: hidden;
   min-height: 0;
 }
+
 .package-detail {
-  padding: 24px 23px 25px;
+  padding: 30px;
   border-top: 1px solid var(--line);
   animation: fadeUp .55s var(--ease) both;
 }
+
 .package-description {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.9;
 }
+
 .package-description p {
   margin: 0 0 15px;
 }
+
 .package-description h4 {
   margin: 27px 0 13px;
   color: var(--ink);
   font: 500 22px var(--serif);
   letter-spacing: -.03em;
 }
+
 .package-description h5 {
   margin: 23px 0 10px;
   color: var(--ink);
@@ -601,17 +688,21 @@ button {
   letter-spacing: .12em;
   text-transform: uppercase;
 }
+
 .package-description ul {
   padding-left: 18px;
   margin: 8px 0 18px;
 }
+
 .package-description li {
   padding-left: 3px;
   margin-bottom: 8px;
 }
+
 /* =========================================================
-   10. PREÇOS
+   12. PREÇOS
 ========================================================= */
+
 .price-line {
   display: flex;
   flex-wrap: wrap;
@@ -619,33 +710,39 @@ button {
   gap: 9px 14px;
   margin: 13px 0 22px;
 }
+
 .price-line strong {
   color: var(--ink);
   font: 500 clamp(29px, 4vw, 42px) var(--serif);
   letter-spacing: -.055em;
 }
+
 .price-line span {
   color: var(--muted);
   font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+
 .price-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   gap: 10px;
   margin: 15px 0 24px;
 }
+
 .price-option {
-  padding: 15px;
+  padding: 17px;
   border: 1px solid var(--line);
-  background: rgba(238,231,223,.45);
+  background: rgba(238, 231, 223, .45);
   transition: background .3s, transform .3s;
 }
+
 .price-option:hover {
   transform: translateY(-3px);
   background: white;
 }
+
 .price-option span {
   display: block;
   color: var(--muted);
@@ -653,60 +750,128 @@ button {
   letter-spacing: .08em;
   text-transform: uppercase;
 }
+
 .price-option strong {
   display: block;
   margin-top: 8px;
   color: var(--ink);
   font: 500 25px var(--serif);
 }
+
 /* =========================================================
-   11. SEGUNDA IMAGEM
+   13. GALERIA DE IMAGENS
 ========================================================= */
-.detail-image {
-  margin-top: 28px;
+
+.package-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  align-items: stretch;
+  gap: 22px;
+  width: 100%;
+  margin: 32px 0;
+  padding: 25px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  animation: fadeUp .55s var(--ease) both;
 }
-.detail-image-label {
+
+.package-gallery-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.package-gallery-item figcaption {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
-  margin-bottom: 11px;
+  align-items: center;
+  gap: 12px;
+  min-height: 30px;
+  margin-bottom: 12px;
   color: var(--muted);
   font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-.detail-image img {
+
+/* Imagens sem fundo, moldura preenchida ou padding. */
+.package-gallery-item img {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 560px;
+  height: 420px;
+  padding: 0;
   object-fit: contain;
   object-position: center;
-  filter: saturate(.78) sepia(.05);
-  transition: filter .4s;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+  transition: transform .55s var(--ease), filter .4s ease;
 }
-.detail-image img:hover {
-  filter: saturate(1);
+
+.package-gallery-item:hover img {
+  transform: translateY(-3px);
+  filter: saturate(1.04);
 }
+
+/* Vídeo integrado à galeria, entre as duas fotos. */
+.package-gallery .video-section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+}
+
+.package-gallery .video-label {
+  min-height: 30px;
+  margin-bottom: 12px;
+}
+
+.package-gallery .video-section video {
+  display: block;
+  width: 100%;
+  height: 420px;
+  max-width: 100%;
+  max-height: none;
+  margin: 0;
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
+  border: 0;
+  border-radius: 2px;
+}
+
+/* Quando existir apenas uma mídia. */
+.package-gallery:has(> :only-child) {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.package-gallery:has(> :only-child) > :only-child {
+  max-width: 760px;
+  margin-inline: auto;
+}
+
 /* =========================================================
-   12. VÍDEO — PROPORÇÃO ORIGINAL DOS ARQUIVOS
+   14. VÍDEOS
 ========================================================= */
 
 .video-section {
-  width: 100%;
-  margin-top: 27px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
+  margin-top: 28px;
 }
 
 .video-label {
   display: block;
   width: 100%;
-  margin-bottom: 11px;
-
+  margin-bottom: 12px;
   color: var(--muted);
-
   font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -714,62 +879,26 @@ button {
 
 .video-section video {
   display: block;
-
   width: auto;
   height: auto;
-
   max-width: 100%;
   max-height: 560px;
-
   margin-inline: auto;
-
   background: #25201c;
-
   object-fit: contain;
   object-position: center;
-
-  border-radius: 2px;
-
-  transition:
-    transform .35s ease,
-    box-shadow .35s ease;
+  border-radius: 3px;
+  transition: box-shadow .35s ease;
 }
 
 .video-section video:hover {
   box-shadow: 0 12px 30px rgba(41, 35, 31, .12);
 }
 
-/* Tablets */
-
-@media (max-width: 950px) {
-  .video-section video {
-    max-height: 480px;
-  }
-}
-
-/* Celulares */
-
-@media (max-width: 680px) {
-  .video-section {
-    margin-top: 22px;
-  }
-
-  .video-section video {
-    max-width: 100%;
-    max-height: 420px;
-  }
-}
-
-/* Celulares menores */
-
-@media (max-width: 420px) {
-  .video-section video {
-    max-height: 360px;
-  }
-}
 /* =========================================================
-   13. WHATSAPP
+   15. WHATSAPP
 ========================================================= */
+
 .whatsapp-cta {
   display: inline-flex;
   justify-content: space-between;
@@ -777,25 +906,35 @@ button {
   gap: 22px;
   margin-top: 26px;
   padding: 14px 17px;
+
   color: var(--paper-light);
   background: var(--ink);
   border: 1px solid var(--ink);
+
   font: 9px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
-  transition: color .3s, background .3s, transform .3s;
+
+  transition:
+    color .3s,
+    background .3s,
+    transform .3s;
 }
+
 .whatsapp-cta:hover {
   color: var(--ink);
   background: transparent;
   transform: translateY(-3px);
 }
+
 .whatsapp-cta span {
   font-size: 16px;
 }
+
 /* =========================================================
-   14. MANIFESTO
+   16. MANIFESTO
 ========================================================= */
+
 .manifesto {
   display: grid;
   grid-template-columns: .75fr 1.25fr;
@@ -804,17 +943,21 @@ button {
   border-top: 1px solid var(--line);
   align-items: start;
 }
+
 .manifesto h2 {
   max-width: 850px;
   font: 500 clamp(42px, 6.7vw, 88px)/.98 var(--serif);
   letter-spacing: -.07em;
 }
+
 .manifesto h2 em {
   color: var(--accent);
 }
+
 /* =========================================================
-   15. FOOTER
+   17. RODAPÉ
 ========================================================= */
+
 .footer {
   display: flex;
   justify-content: space-between;
@@ -826,73 +969,82 @@ button {
   letter-spacing: .1em;
   text-transform: uppercase;
 }
+
 .footer a {
   color: var(--accent-dark);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color .3s;
 }
+
 .footer a:hover {
   color: var(--ink);
 }
+
 /* =========================================================
-   16. TABLETS
+   18. TABLETS
 ========================================================= */
+
 @media (max-width: 950px) {
   .container {
     width: min(100% - 48px, 760px);
   }
+
   .hero-grid {
     gap: 35px;
   }
+
   .package-grid {
     gap: 17px;
   }
-  .card-image {
-    max-width: 165px;
-    max-height: 165px;
-  }
-  .card-image img {
-    max-height: 165px;
-  }
-  .card-summary {
-    align-items: start;
-    flex-direction: column;
-    gap: 10px;
+
+  .package-gallery-item img,
+  .package-gallery .video-section video {
+    height: 360px;
   }
 }
+
 /* =========================================================
-   17. CELULARES
+   19. CELULARES
 ========================================================= */
+
 @media (max-width: 680px) {
   .container {
     width: calc(100% - 36px);
   }
+
   .topbar {
     min-height: 68px;
   }
+
   .top-meta {
     gap: 10px;
     font-size: 7px;
   }
+
   .top-meta > span:first-child,
   .top-meta .status {
     display: none;
   }
+
   .hero {
     padding: 95px 0 75px;
   }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 34px;
   }
+
   .hero h1 {
     font-size: clamp(66px, 16vw, 108px);
   }
+
   .hero-side {
     margin-left: 14%;
     max-width: 340px;
   }
+
   .hero-stamp {
     top: 27px;
     right: 8%;
@@ -900,222 +1052,142 @@ button {
     height: 67px;
     font-size: 7px;
   }
+
   .owner-section {
     grid-template-columns: 1fr;
     gap: 42px;
     padding: 20px 0 95px;
   }
+
   .owner-visual {
     width: min(90%, 410px);
     margin-left: 8px;
   }
+
   .owner-copy h2 {
     font-size: clamp(58px, 14vw, 82px);
   }
+
   .section-heading {
     flex-direction: column;
     align-items: start;
     gap: 18px;
     padding-bottom: 27px;
   }
+
   .section-heading p {
     max-width: 100%;
   }
+
   .package-grid {
     gap: 17px;
   }
-  .package-card:hover {
-    transform: translateY(-3px);
-  }
+
   .package-card > summary {
-    grid-template-columns: minmax(0, 1fr) minmax(96px, 132px);
-    column-gap: 18px;
-    min-height: 180px;
-    padding: 20px;
+    grid-template-columns: minmax(0, 1fr) 42px;
+    column-gap: 12px;
+    min-height: 175px;
+    padding: 22px 18px;
   }
-  .card-image {
-    max-width: 132px;
-    max-height: 150px;
+
+  .card-top {
+    gap: 9px;
   }
-  .card-image img {
-    max-height: 150px;
+
+  .card-tag {
+    font-size: 7px;
+    letter-spacing: .08em;
   }
+
   .card-title-area h3 {
     font-size: clamp(22px, 5vw, 30px);
   }
+
   .card-summary {
-    min-height: auto;
-    align-items: end;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
+
   .card-summary p {
     max-width: 100%;
   }
-  .package-detail {
-    padding: 21px 18px;
+
+  .expand-icon {
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    font-size: 21px;
   }
+
+  .package-detail {
+    padding: 22px 18px;
+  }
+
+  .package-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .package-gallery-item img,
+  .package-gallery .video-section video {
+    height: 300px;
+  }
+}
+
   .manifesto {
     grid-template-columns: 1fr;
     gap: 22px;
     padding: 80px 0;
   }
+
   .footer {
     flex-direction: column;
     gap: 13px;
   }
-}
+
+/* =========================================================
+   20. CELULARES MENORES
+========================================================= */
+
 @media (max-width: 420px) {
   .package-card > summary {
-    grid-template-columns: minmax(0, 1fr) 94px;
-    column-gap: 12px;
-    min-height: 145px;
-    padding: 16px;
+    grid-template-columns: minmax(0, 1fr) 36px;
+    min-height: 160px;
+    padding: 18px 14px;
   }
-  .card-top {
-    gap: 8px;
-    padding-right: 42px;
-  }
-  .card-tag {
-    font-size: 7px;
-    letter-spacing: .08em;
-  }
-  .card-title-area {
-    padding-right: 42px;
-  }
+
   .card-title-area h3 {
     font-size: clamp(19px, 5.2vw, 24px);
   }
+
+  .card-summary p {
+    font-size: 11px;
+  }
+
   .expand-icon {
-    top: 15px;
-    right: 15px;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    font-size: 19px;
   }
-  .card-image {
-    max-width: 94px;
-    max-height: 120px;
-  }
-  .card-image img {
-    max-height: 120px;
-  }
-  .card-summary {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  .card-summary .view-label {
-    font-size: 7px;
+
+.package-gallery-item img,
+  .package-gallery .video-section video {
+    height: 230px;
   }
 }
 
 /* =========================================================
-   BOTÃO (+) E IMAGEM — ÁREAS INDEPENDENTES
+   21. ACESSIBILIDADE
 ========================================================= */
 
-/* Card como referência de posicionamento */
-.package-card {
-  position: relative;
-}
-
-/* Botão (+) */
-.package-toggle {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-
-  z-index: 5;
-
-  width: 38px;
-  height: 38px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  flex-shrink: 0;
-
-  border: 1px solid var(--paper-dark);
-  border-radius: 50%;
-
-  background: var(--paper-light);
-  color: var(--ink);
-
-  cursor: pointer;
-
-  transition:
-    transform .35s ease,
-    background .35s ease,
-    color .35s ease,
-    border-color .35s ease;
-}
-
-.package-toggle:hover {
-  background: var(--accent);
-  color: #fff;
-  border-color: var(--accent);
-}
-
-/* Imagem do card */
-.package-preview {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 100%;
-  min-width: 0;
-
-  padding: 20px 65px 20px 20px;
-
-  box-sizing: border-box;
-}
-
-/* Imagem propriamente dita */
-.package-preview img {
-  display: block;
-
-  width: auto;
-  height: auto;
-
-  max-width: 100%;
-  max-height: 190px;
-
-  object-fit: contain;
-  object-position: center;
-}
-
-/* Animação do botão ao abrir */
-.package-card[open] .package-toggle {
-  transform: rotate(45deg);
-}
-
-/* Responsividade */
-@media (max-width: 680px) {
-  .package-toggle {
-    top: 14px;
-    right: 14px;
-
-    width: 34px;
-    height: 34px;
-  }
-
-  .package-preview {
-    padding: 55px 14px 14px;
-  }
-
-  .package-preview img {
-    max-height: 165px;
-  }
-}
-/* =========================================================
-   18. ACESSIBILIDADE
-========================================================= */
 .package-card summary:focus-visible,
 a:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 4px;
 }
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1124,11 +1196,13 @@ a:focus-visible {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
+
   .reveal {
     opacity: 1;
     transform: none;
   }
 }
+
 </style>
 </head>
 <body>
@@ -1250,7 +1324,7 @@ a:focus-visible {
         </div>
         <div class="card-image">
           <img
-            src="aikibom.PNG"
+            src="pct1.jpeg"
             alt="Produção de conteúdo para marcas"
             loading="lazy"
           >
@@ -1292,7 +1366,7 @@ a:focus-visible {
                 <span>Produção de conteúdo</span>
               </figcaption>
               <img
-                src=""
+                src="pct1-2.PNG"
                 alt="Imagem complementar do pacote mensal"
                 loading="lazy"
               >
@@ -1331,7 +1405,7 @@ a:focus-visible {
         </div>
         <div class="card-image">
           <img
-            src="imagens/pacote-02-01.jpg"
+            src="pct2.jpeg"
             alt="Produção audiovisual"
             loading="lazy"
           >
@@ -1401,7 +1475,7 @@ a:focus-visible {
                 <span>Produção audiovisual</span>
               </figcaption>
               <img
-                src="imagens/pacote-02-02.jpg"
+                src="pct2-2.PNG"
                 alt="Imagem complementar de produção de vídeo"
                 loading="lazy"
               >
@@ -1497,7 +1571,7 @@ a:focus-visible {
             <div class="video-section">
               <span class="video-label">03 / Vídeo de apresentação</span>
               <video controls playsinline preload="metadata">
-                <source src="videos/pacote-03.mp4" type="video/mp4">
+                <source src="pct3.mp4" type="video/mp4">
                 Seu navegador não conseguiu reproduzir este vídeo.
               </video>
             </div>
@@ -1629,7 +1703,7 @@ a:focus-visible {
         </div>
         <div class="card-image">
           <img
-            src="DrLuiz.JPG"
+            src="Rn.jpeg"
             alt="Estação de trabalho para produção digital"
             loading="lazy"
           >
@@ -1689,7 +1763,7 @@ a:focus-visible {
                 <span>Produção de conteúdo</span>
               </figcaption>
               <img
-                src="eqp.JPG"
+                src="Rn2.jpeg"
                 alt="Imagem complementar da diária de produção"
                 loading="lazy"
               >
@@ -1697,7 +1771,7 @@ a:focus-visible {
             <div class="video-section">
               <span class="video-label">03 / Vídeo de apresentação</span>
               <video controls playsinline preload="metadata">
-                <source src="videos/pacote-05.mp4" type="video/mp4">
+                <source src="pct5.mp4" type="video/mp4">
                 Seu navegador não conseguiu reproduzir este vídeo.
               </video>
             </div>
@@ -1728,7 +1802,7 @@ a:focus-visible {
         </div>
         <div class="card-image">
           <img
-            src="imagens/pacote-06-01.jpg"
+            src="pct6.jpeg"
             alt="Evento com público e iluminação de palco"
             loading="lazy"
           >
@@ -1790,7 +1864,7 @@ a:focus-visible {
                 <span>Story Maker</span>
               </figcaption>
               <img
-                src="imagens/pacote-06-02.jpg"
+                src="pct6-2.jpeg"
                 alt="Imagem complementar de cobertura de eventos"
                 loading="lazy"
               >
@@ -1928,7 +2002,7 @@ a:focus-visible {
             <div class="video-section">
               <span class="video-label">03 / Vídeo de apresentação</span>
               <video controls playsinline preload="metadata">
-                <source src="videos/pacote-07.mp4" type="video/mp4">
+                <source src="pct7.mp4" type="video/mp4">
                 Seu navegador não conseguiu reproduzir este vídeo.
               </video>
             </div>
@@ -2131,27 +2205,139 @@ a:focus-visible {
 /* =========================================================
    01. ANIMAÇÃO AO ROLAR A PÁGINA
 ========================================================= */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
+
+const revealElements = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12
   });
-}, {
-  threshold: 0.12
-});
-document.querySelectorAll('.reveal').forEach(element => {
-  revealObserver.observe(element);
-});
+
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
+  });
+} else {
+  revealElements.forEach(element => {
+    element.classList.add('visible');
+  });
+}
+
+
+
 /* =========================================================
-   02. EXPANSÃO DOS CARDS
-   Permite manter apenas um pacote aberto por vez.
+   02. GALERIA DE MÍDIAS
+   Ordem: foto principal → vídeo → foto complementar.
 ========================================================= */
+
 const packageCards = document.querySelectorAll('.package-card');
+
+packageCards.forEach(card => {
+  const mainImage = card.querySelector('.card-image img');
+  const complementaryFigure = card.querySelector('.detail-image');
+  const description = card.querySelector('.package-description');
+  const videoSection = card.querySelector('.video-section');
+
+  if (!description) return;
+
+  const mainImageSource = mainImage?.getAttribute('src')?.trim() || '';
+  const complementaryImage = complementaryFigure?.querySelector('img');
+
+  const complementarySource =
+    complementaryImage?.getAttribute('src')?.trim() || '';
+
+  const hasMainImage = Boolean(mainImageSource);
+  const hasComplementaryImage = Boolean(complementarySource);
+  const hasVideo = Boolean(videoSection?.querySelector('video source[src]'));
+
+  if (!hasMainImage && !hasComplementaryImage && !hasVideo) {
+    complementaryFigure?.remove();
+    videoSection?.remove();
+    return;
+  }
+
+  const gallery = document.createElement('div');
+  gallery.className = 'package-gallery';
+
+  // 1. Foto principal.
+  if (hasMainImage) {
+    const mainFigure = document.createElement('figure');
+    mainFigure.className = 'package-gallery-item';
+
+    const caption = document.createElement('figcaption');
+    caption.textContent = '01 / Imagem principal';
+
+    const image = document.createElement('img');
+    image.src = mainImageSource;
+    image.alt = mainImage.alt || 'Imagem principal do pacote';
+    image.loading = 'lazy';
+
+    mainFigure.append(caption, image);
+    gallery.appendChild(mainFigure);
+  }
+
+  // 2. Vídeo entre as fotografias.
+  if (hasVideo) {
+    videoSection.classList.add('gallery-video');
+
+    const videoLabel = videoSection.querySelector('.video-label');
+
+    if (videoLabel) {
+      videoLabel.textContent = '02 / Vídeo de apresentação';
+    }
+
+    gallery.appendChild(videoSection);
+  } else {
+    videoSection?.remove();
+  }
+
+  // 3. Foto complementar.
+  if (hasComplementaryImage && complementaryFigure) {
+    complementaryFigure.classList.remove('detail-image');
+    complementaryFigure.classList.add('package-gallery-item');
+
+    const caption = complementaryFigure.querySelector('figcaption');
+
+    if (caption) {
+      const spans = caption.querySelectorAll('span');
+
+      if (spans[0]) {
+        spans[0].textContent = '03 / Imagem complementar';
+      }
+    }
+
+    gallery.appendChild(complementaryFigure);
+  } else {
+    complementaryFigure?.remove();
+  }
+
+  if (gallery.children.length === 1) {
+    gallery.classList.add('single-image');
+  }
+
+  // Galeria aparece depois da descrição.
+  description.insertAdjacentElement('afterend', gallery);
+});
+
+
+
+/* =========================================================
+   03. ABERTURA DOS CARDS
+   Mantém apenas um pacote aberto por vez.
+========================================================= */
+
 packageCards.forEach(card => {
   card.addEventListener('toggle', () => {
-    if (!card.open) return;
+    if (!card.open) {
+      return;
+    }
+
     packageCards.forEach(otherCard => {
       if (otherCard !== card && otherCard.open) {
         otherCard.open = false;
@@ -2159,10 +2345,21 @@ packageCards.forEach(card => {
     });
   });
 });
+
+
 /* =========================================================
-   03. FECHAR CARD AO CLICAR NOVAMENTE NO MESMO CARD
-   O comportamento padrão do <details> já faz isso.
+   04. ACESSIBILIDADE
 ========================================================= */
+
+packageCards.forEach(card => {
+  const summary = card.querySelector('summary');
+
+  if (!summary) {
+    return;
+  }
+
+  summary.setAttribute('aria-label', 'Abrir ou fechar detalhes do pacote');
+});
 </script>
 </body>
 </html>
