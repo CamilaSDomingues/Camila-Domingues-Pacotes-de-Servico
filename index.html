@@ -1,1556 +1,2168 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#eee7df">
-  <meta name="description" content="Serviços e pacotes de produção de conteúdo, social media, design e identidade visual — Camila Domingues.">
-  <title>Serviços & Pacotes — Camila Domingues</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
-
-  <style>
-
-    
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eee7df">
+<meta name="description" content="Serviços e pacotes de Camila Domingues. Produção de conteúdo, social media, audiovisual, design e identidade visual.">
+<title>Serviços & Pacotes — Camila Domingues</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
 /* =========================================================
-   01. IDENTIDADE VISUAL E VARIÁVEIS
+   01. VARIÁVEIS
 ========================================================= */
-
 :root {
   --paper: #eee7df;
-  --paper-2: #e5d9ce;
+  --paper-light: #f8f5f1;
+  --paper-dark: #e5d9ce;
   --ink: #29231f;
   --muted: #776a60;
-  --line: rgba(54, 43, 35, .22);
   --accent: #987b67;
   --accent-dark: #594638;
-  --white: #f8f5f1;
-
+  --line: rgba(54, 43, 35, .16);
+  --shadow: 0 18px 55px rgba(54, 43, 35, .09);
   --mono: "DM Mono", monospace;
   --sans: "DM Sans", sans-serif;
   --serif: "Playfair Display", serif;
+  --ease: cubic-bezier(.2,.7,.2,1);
 }
-
-
 /* =========================================================
-   02. RESET E CONFIGURAÇÕES GERAIS
+   02. RESET
 ========================================================= */
-
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
 }
-
 body {
-  margin: 0;
-  color: var(--ink);
   background: var(--paper);
+  color: var(--ink);
   font-family: var(--sans);
   overflow-x: hidden;
 }
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  font: inherit;
-}
-
-.shell {
-  width: min(1440px, calc(100% - 72px));
-  margin: 0 auto;
-}
-
-
-/* Textura de fundo */
-
 body::before {
   content: "";
   position: fixed;
   inset: 0;
+  z-index: 10;
   pointer-events: none;
-  z-index: 5;
   opacity: .12;
-
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
 }
-
-
-/* =========================================================
-   03. CABEÇALHO
-========================================================= */
-
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 25px 0;
-  border-bottom: 1px solid var(--line);
-
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .12em;
+img, video {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+}
+::selection {
+  color: var(--paper-light);
+  background: var(--accent-dark);
+}
+.container {
+  width: min(1320px, calc(100% - 80px));
+  margin: 0 auto;
+}
+.eyebrow {
+  display: inline-block;
+  color: var(--muted);
+  font: 10px var(--mono);
+  letter-spacing: .15em;
   text-transform: uppercase;
 }
-
-.brand {
+.serif {
   font-family: var(--serif);
-  font-size: 23px;
-  letter-spacing: -.06em;
-  text-transform: none;
 }
-
+.accent {
+  color: var(--accent);
+}
+/* =========================================================
+   03. ANIMAÇÕES
+========================================================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes rotateStamp {
+  from { transform: rotate(-18deg); }
+  to { transform: rotate(342deg); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* =========================================================
+   04. CABEÇALHO
+========================================================= */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 82px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  font: 500 26px var(--serif);
+  letter-spacing: -.07em;
+}
 .brand span {
   color: var(--accent);
 }
-
 .top-meta {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 28px;
   color: var(--muted);
+  font: 9px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
 }
-
 .status {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 }
-
 .status::before {
   content: "";
   width: 6px;
   height: 6px;
   border-radius: 50%;
-
-  background: #7e9272;
-  box-shadow: 0 0 0 4px rgba(126,146,114,.13);
+  background: #819477;
+  box-shadow: 0 0 0 4px rgba(129,148,119,.13);
 }
-
-
 /* =========================================================
-   04. HERO / APRESENTAÇÃO
+   05. HERO
 ========================================================= */
-
 .hero {
   position: relative;
-  padding: clamp(76px, 10vw, 150px) 0 84px;
-  min-height: 610px;
+  padding: clamp(95px, 12vw, 165px) 0 115px;
 }
-
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr .75fr;
-  gap: 35px;
+  grid-template-columns: 1.3fr .7fr;
   align-items: end;
+  gap: 70px;
 }
-
-.eyebrow,
-.micro {
-  font: 10px var(--mono);
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-
 .hero h1 {
-  max-width: 920px;
-  margin: 25px 0 0;
-
-  font-size: clamp(64px, 10.5vw, 154px);
-  line-height: .82;
-  letter-spacing: -.095em;
+  margin-top: 28px;
+  font-size: clamp(76px, 11.5vw, 158px);
+  line-height: .81;
+  letter-spacing: -.105em;
   font-weight: 500;
+  animation: fadeUp 1s var(--ease) both;
 }
-
 .hero h1 em {
   font-family: var(--serif);
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: -.085em;
 }
-
 .hero-side {
-  max-width: 300px;
-  padding: 0 0 10px 22px;
+  max-width: 340px;
+  margin-bottom: 8px;
+  padding-left: 24px;
   border-left: 1px solid var(--line);
+  animation: fadeUp 1s .2s var(--ease) both;
 }
-
 .hero-side p {
-  margin: 0 0 28px;
   color: var(--muted);
   font-size: 14px;
-  line-height: 1.8;
+  line-height: 1.9;
+  margin-bottom: 30px;
 }
-
-
-/* Link de exploração */
-
 .scroll-link {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-
-  font: 10px var(--mono);
-  letter-spacing: .1em;
+  gap: 13px;
+  font: 9px var(--mono);
+  letter-spacing: .12em;
   text-transform: uppercase;
 }
-
-.scroll-link b {
-  display: grid;
-  place-items: center;
-
-  width: 35px;
-  height: 35px;
-
+.scroll-link span {
+  width: 34px;
+  height: 34px;
   border: 1px solid var(--line);
   border-radius: 50%;
-
-  font-size: 17px;
-  font-weight: 400;
-
-  transition: .3s;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  transition: .35s var(--ease);
 }
-
-.scroll-link:hover b {
-  color: var(--paper);
+.scroll-link:hover span {
+  color: var(--paper-light);
   background: var(--ink);
   transform: rotate(45deg);
 }
-
-
-/* Elementos decorativos */
-
-.hero-index {
-  position: absolute;
-  right: 2px;
-  top: 50%;
-
-  writing-mode: vertical-rl;
-
-  font: 9px var(--mono);
-  letter-spacing: .18em;
-  color: var(--muted);
-}
-
 .hero-stamp {
   position: absolute;
-  left: 53%;
-  top: 48px;
-
-  width: 94px;
-  height: 94px;
-
+  top: 65px;
+  right: 24%;
+  width: 88px;
+  height: 88px;
   border: 1px solid var(--line);
   border-radius: 50%;
-
   display: grid;
   place-items: center;
-
-  transform: rotate(-13deg);
-
-  font: 9px var(--mono);
   text-align: center;
-  line-height: 1.5;
   color: var(--muted);
+  font: 8px/1.6 var(--mono);
+  letter-spacing: .08em;
+  transform: rotate(-15deg);
 }
-
 .hero-stamp::after {
   content: "✳";
   position: absolute;
-  font-size: 27px;
+  font-size: 24px;
   color: var(--accent);
 }
-
-
 /* =========================================================
-   05. CABEÇALHO DA SEÇÃO DE SERVIÇOS
+   06. APRESENTAÇÃO DA CAMILA
 ========================================================= */
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-
-  padding: 28px 0 22px;
-  border-top: 1px solid var(--line);
-}
-
-.section-head h2 {
-  margin: 0;
-
-  font: 500 clamp(30px, 4vw, 55px)/.98 var(--serif);
-  letter-spacing: -.055em;
-}
-
-.section-head p {
-  margin: 0;
-  max-width: 290px;
-
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
-}
-
-
-/* =========================================================
-   06. LISTA E ESTRUTURA DOS PACOTES
-========================================================= */
-
-.package-list {
-  border-top: 1px solid var(--line);
-}
-
-.package {
-  position: relative;
-
+.owner-section {
   display: grid;
-  grid-template-columns: 68px minmax(190px, .8fr) minmax(240px, 1fr) 42px;
-  grid-template-rows: auto auto auto;
-
-  gap: 18px 24px;
+  grid-template-columns: .9fr 1.1fr;
   align-items: center;
-
-  padding: 22px 0;
-  border-bottom: 1px solid var(--line);
-
-  transition: background .35s, padding .35s;
+  gap: clamp(55px, 9vw, 130px);
+  padding: 30px 0 145px;
 }
-
-.package:hover,
-.package.is-open {
-  background: rgba(255,255,255,.22);
-  padding-left: 16px;
-  padding-right: 16px;
+.owner-visual {
+  position: relative;
+  max-width: 490px;
+  padding: 0 28px 28px 0;
 }
-
-
-/* Numeração */
-
-.number {
-  grid-column: 1;
-  grid-row: 1 / 3;
-
-  align-self: start;
-  padding-top: 7px;
-
-  color: var(--accent);
-  font: 11px var(--mono);
+.owner-frame {
+  position: absolute;
+  inset: 28px 0 0 28px;
+  border: 1px solid var(--accent);
+  transition: transform .6s var(--ease);
 }
-
-
-/* Título e identificação */
-
-.package-main {
-  grid-column: 2;
-  grid-row: 1;
-  min-width: 0;
+.owner-visual:hover .owner-frame {
+  transform: translate(8px, 8px);
 }
-
-.package-tag {
-  display: block;
-  margin-bottom: 9px;
-
-  color: var(--muted);
+.owner-photo {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--paper-dark);
+  box-shadow: var(--shadow);
+}
+.owner-photo img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(.78) sepia(.08);
+  transition: transform .9s var(--ease), filter .6s;
+}
+.owner-visual:hover .owner-photo img {
+  transform: scale(1.035);
+  filter: saturate(.95);
+}
+.owner-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 65%, rgba(30,22,18,.3));
+}
+.owner-caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 20px;
+  color: white;
   font: 9px var(--mono);
   letter-spacing: .13em;
   text-transform: uppercase;
 }
-
-.package h3 {
-  margin: 0;
-
-  font-size: clamp(20px, 2.3vw, 31px);
-  line-height: 1.05;
-  letter-spacing: -.055em;
-  font-weight: 500;
-}
-
-
-/* =========================================================
-   07. IMAGENS E DESCRIÇÕES DOS PACOTES
-========================================================= */
-
-.package-photo {
-  grid-column: 3;
-  grid-row: 1;
-
-  height: 116px;
-  overflow: hidden;
-  position: relative;
-
-  background: var(--paper-2);
-}
-
-.package-photo img {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  filter: saturate(.65) sepia(.12);
-
-  transition:
-    transform .7s cubic-bezier(.2,.7,.2,1),
-    filter .5s;
-}
-
-.package:hover .package-photo img,
-.package.is-open .package-photo img {
-  transform: scale(1.055);
-  filter: saturate(.85) sepia(.08);
-}
-
-.package-photo::after {
-  content: "REFERENCE / VISUAL";
-
+.owner-seal {
   position: absolute;
-  bottom: 8px;
-  left: 9px;
-
-  color: white;
-  font: 8px var(--mono);
-  letter-spacing: .1em;
-  text-shadow: 0 1px 5px #000;
-}
-
-
-/* Descrição abaixo da imagem */
-
-.package-summary {
-  grid-column: 3;
-  grid-row: 2;
-
-  max-width: 290px;
-  margin: 0;
-  align-self: start;
-
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 1.65;
-}
-
-
-/* =========================================================
-   08. BOTÃO DE EXPANSÃO (+)
-========================================================= */
-
-.expand {
-  grid-column: 4;
-  grid-row: 1;
-
-  width: 38px;
-  height: 38px;
-
+  z-index: 3;
+  right: 0;
+  bottom: 0;
+  width: 88px;
+  height: 88px;
+  border: 6px solid var(--paper);
+  border-radius: 50%;
   display: grid;
   place-items: center;
-
-  border: 1px solid var(--line);
-  border-radius: 50%;
-
-  background: transparent;
-  color: var(--ink);
-
-  cursor: pointer;
-  font-size: 20px;
-
-  transition: .3s;
+  color: var(--paper-light);
+  background: var(--accent-dark);
+  font: italic 28px var(--serif);
+  transition: transform .5s var(--ease);
 }
-
-.package.is-open .expand {
-  color: var(--paper);
-  background: var(--ink);
-  transform: rotate(45deg);
+.owner-visual:hover .owner-seal {
+  transform: rotate(12deg);
 }
-
-
-/* =========================================================
-   09. PAINÉIS EXPANSÍVEIS
-========================================================= */
-
-.details {
-  grid-column: 2 / 4;
-  grid-row: 3;
-
-  display: grid;
-  grid-template-rows: 0fr;
-
-  transition: grid-template-rows .45s ease;
+.owner-copy {
+  max-width: 590px;
 }
-
-.details-inner {
-  overflow: hidden;
+.owner-copy h2 {
+  margin: 24px 0 28px;
+  font: 500 clamp(58px, 7vw, 96px)/.91 var(--serif);
+  letter-spacing: -.08em;
 }
-
-.package.is-open .details {
-  grid-template-rows: 1fr;
+.owner-copy h2 em {
+  color: var(--accent);
+  font-weight: 400;
 }
-
-.details-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-
-  gap: 30px 35px;
-  padding: 22px 0 10px;
-
-  opacity: 0;
-  transform: translateY(-8px);
-
-  transition: .35s .08s;
+.owner-lead {
+  max-width: 470px;
+  margin-bottom: 17px;
+  font: 500 clamp(18px, 2vw, 23px)/1.5 var(--serif);
 }
-
-.package.is-open .details-content {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-/* =========================================================
-   10. DESCRIÇÕES E INFORMAÇÕES DOS SERVIÇOS
-========================================================= */
-
-.package-description {
-  grid-column: 1 / -1;
-
+.owner-description {
+  max-width: 465px;
+  margin-bottom: 30px;
   color: var(--muted);
   font-size: 13px;
-  line-height: 1.8;
+  line-height: 1.95;
 }
-
-.package-description p {
-  margin: 0 0 14px;
-  max-width: 900px;
+/* =========================================================
+   07. INTRODUÇÃO DOS PACOTES
+========================================================= */
+.services-section {
+  padding-bottom: 65px;
 }
-
-.package-description h4 {
-  margin: 26px 0 12px;
-
-  color: var(--ink);
-  font: 500 20px var(--serif);
-  letter-spacing: -.02em;
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 35px;
+  padding: 30px 0 38px;
+  border-top: 1px solid var(--line);
 }
-
-.package-description h5 {
-  margin: 18px 0 8px;
-
-  color: var(--ink);
-  font: 500 12px var(--mono);
-  letter-spacing: .08em;
+.section-heading h2 {
+  margin-top: 13px;
+  font: 500 clamp(38px, 5vw, 64px)/.95 var(--serif);
+  letter-spacing: -.065em;
+}
+.section-heading p {
+  max-width: 330px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.85;
+}
+/* =========================================================
+   08. CARDS DOS PACOTES
+   Estrutura vertical: um pacote por linha.
+   Texto à esquerda, imagem proporcional à direita.
+========================================================= */
+.package-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+}
+.package-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(54, 43, 35, .14);
+  background: rgba(248, 245, 241, .55);
+  box-shadow: 0 5px 20px rgba(54, 43, 35, .025);
+  transition:
+    transform .45s var(--ease),
+    box-shadow .45s var(--ease),
+    border-color .35s ease,
+    background .35s ease;
+}
+.package-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(152, 123, 103, .45);
+  background: var(--paper-light);
+  box-shadow: 0 20px 45px rgba(54, 43, 35, .09);
+}
+.package-card[open] {
+  background: var(--paper-light);
+  border-color: rgba(152, 123, 103, .5);
+  box-shadow: var(--shadow);
+}
+.package-card > summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(120px, 190px);
+  grid-template-areas:
+    "top top"
+    "title image"
+    "description image";
+  align-items: center;
+  column-gap: 30px;
+  row-gap: 8px;
+  min-height: 230px;
+  padding: 25px 30px;
+  cursor: pointer;
+  list-style: none;
+  outline: none;
+}
+.package-card > summary::-webkit-details-marker {
+  display: none;
+}
+.package-card > summary::marker {
+  content: "";
+}
+.card-top {
+  grid-area: top;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  min-width: 0;
+  padding-right: 54px;
+}
+.card-number {
+  color: var(--accent-dark);
+  font: 9px var(--mono);
+  letter-spacing: .12em;
+}
+.card-tag {
+  color: var(--muted);
+  font: 8px var(--mono);
+  letter-spacing: .13em;
   text-transform: uppercase;
 }
-
-.package-description ul {
-  margin: 8px 0 18px;
-  padding-left: 19px;
+.card-title-area {
+  grid-area: title;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 10px 54px 4px 0;
 }
-
-.package-description li {
-  margin: 0 0 7px;
-  padding-left: 3px;
+.card-title-area h3 {
+  max-width: 760px;
+  color: var(--ink);
+  font: 500 clamp(25px, 3vw, 39px)/1.08 var(--serif);
+  letter-spacing: -.045em;
 }
-
-
+.expand-icon {
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--accent-dark);
+  background: transparent;
+  font: 20px/1 var(--sans);
+  transition:
+    color .3s ease,
+    background .3s ease,
+    border-color .3s ease,
+    transform .4s var(--ease);
+}
+.package-card:hover .expand-icon {
+  border-color: var(--accent-dark);
+  color: var(--paper-light);
+  background: var(--accent-dark);
+}
+.package-card[open] .expand-icon {
+  transform: rotate(45deg);
+  color: var(--paper-light);
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+}
+.card-image {
+  grid-area: image;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: end;
+  width: 100%;
+  max-width: 190px;
+  max-height: 190px;
+  min-width: 0;
+  overflow: hidden;
+  background: transparent;
+}
+.card-image img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 190px;
+  object-fit: contain;
+  object-position: center;
+  transition: transform .65s var(--ease), filter .4s ease;
+}
+.package-card:hover .card-image img {
+  transform: scale(1.035);
+  filter: saturate(1.04);
+}
+.card-summary {
+  grid-area: description;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  min-width: 0;
+  padding: 4px 0 8px;
+}
+.card-summary p {
+  max-width: 590px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.85;
+}
+.card-summary .view-label {
+  flex-shrink: 0;
+  color: var(--accent-dark);
+  font: 8px var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: transform .3s ease;
+}
+.package-card:hover .view-label {
+  transform: translateX(4px);
+}
 /* =========================================================
-   11. PREÇOS E OPÇÕES DE CONTRATAÇÃO
+   08.1. ESTADO DE FOCO E INTERAÇÃO DOS CARDS
 ========================================================= */
-
+.package-card > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -4px;
+}
+.package-card[open] > summary {
+  border-bottom: 1px solid rgba(54, 43, 35, .08);
+}
+/* =========================================================
+   09. CONTEÚDO EXPANSÍVEL
+========================================================= */
+.package-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .55s var(--ease);
+}
+.package-card[open] .package-content {
+  grid-template-rows: 1fr;
+}
+.package-content-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+.package-detail {
+  padding: 24px 23px 25px;
+  border-top: 1px solid var(--line);
+  animation: fadeUp .55s var(--ease) both;
+}
+.package-description {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.9;
+}
+.package-description p {
+  margin: 0 0 15px;
+}
+.package-description h4 {
+  margin: 27px 0 13px;
+  color: var(--ink);
+  font: 500 22px var(--serif);
+  letter-spacing: -.03em;
+}
+.package-description h5 {
+  margin: 23px 0 10px;
+  color: var(--ink);
+  font: 500 10px var(--mono);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.package-description ul {
+  padding-left: 18px;
+  margin: 8px 0 18px;
+}
+.package-description li {
+  padding-left: 3px;
+  margin-bottom: 8px;
+}
+/* =========================================================
+   10. PREÇOS
+========================================================= */
 .price-line {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-
-  gap: 9px 16px;
-  margin: 12px 0 18px;
+  gap: 9px 14px;
+  margin: 13px 0 22px;
 }
-
 .price-line strong {
   color: var(--ink);
-
-  font: 500 clamp(25px, 3vw, 38px) var(--serif);
-  letter-spacing: -.04em;
+  font: 500 clamp(29px, 4vw, 42px) var(--serif);
+  letter-spacing: -.055em;
 }
-
 .price-line span {
   color: var(--muted);
-
-  font: 9px var(--mono);
+  font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-
 .price-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   gap: 10px;
-  margin: 14px 0 22px;
+  margin: 15px 0 24px;
 }
-
 .price-option {
-  padding: 14px;
-
+  padding: 15px;
   border: 1px solid var(--line);
-  background: rgba(255,255,255,.18);
+  background: rgba(238,231,223,.45);
+  transition: background .3s, transform .3s;
 }
-
+.price-option:hover {
+  transform: translateY(-3px);
+  background: white;
+}
 .price-option span {
   display: block;
-
   color: var(--muted);
-  font: 9px var(--mono);
+  font: 8px/1.6 var(--mono);
   letter-spacing: .08em;
   text-transform: uppercase;
 }
-
 .price-option strong {
   display: block;
-  margin-top: 7px;
-
+  margin-top: 8px;
+  color: var(--ink);
   font: 500 25px var(--serif);
 }
-
-
 /* =========================================================
-   12. ESPAÇO RESERVADO PARA VÍDEOS
+   11. SEGUNDA IMAGEM
+========================================================= */
+.detail-image {
+  margin-top: 28px;
+}
+.detail-image-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 11px;
+  color: var(--muted);
+  font: 8px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.detail-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(.78) sepia(.05);
+  transition: filter .4s;
+}
+.detail-image img:hover {
+  filter: saturate(1);
+}
+/* =========================================================
+   12. VÍDEO — PROPORÇÃO ORIGINAL DOS ARQUIVOS
 ========================================================= */
 
-.video-slot {
-  grid-column: 1 / -1;
-
-  position: relative;
-  min-height: 190px;
-  overflow: hidden;
-
-  background: #2b2521;
-  border: 1px solid rgba(54,43,35,.18);
-}
-
-.video-slot video {
-  display: block;
-
+.video-section {
   width: 100%;
-  max-height: 460px;
-
-  aspect-ratio: 16 / 9;
-  object-fit: contain;
-
-  background: #201c19;
-}
-
-.video-empty {
-  min-height: 190px;
-
+  margin-top: 27px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 10px;
-  padding: 25px;
-
-  color: #eee7df;
-  text-align: center;
+  align-items: flex-start;
 }
 
-.video-empty .play-mark {
-  display: grid;
-  place-items: center;
+.video-label {
+  display: block;
+  width: 100%;
+  margin-bottom: 11px;
 
-  width: 48px;
-  height: 48px;
+  color: var(--muted);
 
-  border: 1px solid rgba(238,231,223,.55);
-  border-radius: 50%;
-
-  font-size: 18px;
-  padding-left: 3px;
-}
-
-.video-empty strong {
-  font: 500 18px var(--serif);
-}
-
-.video-empty small {
-  color: rgba(238,231,223,.65);
-
-  font: 9px var(--mono);
+  font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
 
+.video-section video {
+  display: block;
 
-/* =========================================================
-   13. BOTÃO DO WHATSAPP
-========================================================= */
+  width: auto;
+  height: auto;
 
-.whatsapp-cta {
-  grid-column: 1 / -1;
-  justify-self: start;
+  max-width: 100%;
+  max-height: 560px;
 
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
+  margin-inline: auto;
 
-  margin-top: 4px;
-  padding: 13px 18px;
+  background: #25201c;
 
-  border: 1px solid var(--ink);
+  object-fit: contain;
+  object-position: center;
 
-  color: var(--paper);
-  background: var(--ink);
-
-  font: 10px var(--mono);
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  border-radius: 2px;
 
   transition:
-    background .25s,
-    color .25s,
-    transform .25s;
+    transform .35s ease,
+    box-shadow .35s ease;
 }
 
+.video-section video:hover {
+  box-shadow: 0 12px 30px rgba(41, 35, 31, .12);
+}
+
+/* Tablets */
+
+@media (max-width: 950px) {
+  .video-section video {
+    max-height: 480px;
+  }
+}
+
+/* Celulares */
+
+@media (max-width: 680px) {
+  .video-section {
+    margin-top: 22px;
+  }
+
+  .video-section video {
+    max-width: 100%;
+    max-height: 420px;
+  }
+}
+
+/* Celulares menores */
+
+@media (max-width: 420px) {
+  .video-section video {
+    max-height: 360px;
+  }
+}
+/* =========================================================
+   13. WHATSAPP
+========================================================= */
+.whatsapp-cta {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 22px;
+  margin-top: 26px;
+  padding: 14px 17px;
+  color: var(--paper-light);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  font: 9px var(--mono);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: color .3s, background .3s, transform .3s;
+}
 .whatsapp-cta:hover {
   color: var(--ink);
   background: transparent;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
 }
-
 .whatsapp-cta span {
   font-size: 16px;
-  line-height: 1;
 }
-
-
 /* =========================================================
    14. MANIFESTO
 ========================================================= */
-
 .manifesto {
-  margin: 120px 0 100px;
-
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
-
-  gap: 50px;
+  grid-template-columns: .75fr 1.25fr;
+  gap: 55px;
+  padding: 100px 0 125px;
+  border-top: 1px solid var(--line);
   align-items: start;
 }
-
-.manifesto .micro {
-  padding-top: 12px;
-}
-
 .manifesto h2 {
-  margin: 0;
-  max-width: 800px;
-
-  font: 500 clamp(36px, 6vw, 82px)/.98 var(--serif);
-  letter-spacing: -.06em;
+  max-width: 850px;
+  font: 500 clamp(42px, 6.7vw, 88px)/.98 var(--serif);
+  letter-spacing: -.07em;
 }
-
 .manifesto h2 em {
   color: var(--accent);
 }
-
-
 /* =========================================================
-   15. RODAPÉ
+   15. FOOTER
 ========================================================= */
-
 .footer {
-  border-top: 1px solid var(--line);
-
-  padding: 22px 0 35px;
-
   display: flex;
   justify-content: space-between;
   gap: 20px;
-
+  padding: 24px 0 38px;
+  border-top: 1px solid var(--line);
   color: var(--muted);
-
-  font: 9px var(--mono);
+  font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-
-
-/* Link Mov.ByCamila */
-
 .footer a {
-  color: #4e382a !important;
-  text-decoration: none;
-
-  transition: color .3s ease;
-
+  color: var(--accent-dark);
   text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .3s;
 }
-
-
+.footer a:hover {
+  color: var(--ink);
+}
 /* =========================================================
-   16. RESPONSIVIDADE — TABLETS E CELULARES
+   16. TABLETS
 ========================================================= */
-
-@media (max-width: 800px) {
-
-  /* Estrutura geral */
-
-  .shell {
-    width: min(100% - 36px, 620px);
+@media (max-width: 950px) {
+  .container {
+    width: min(100% - 48px, 760px);
   }
-
-
-  /* Cabeçalho */
-
-  .topbar {
-    padding: 19px 0;
+  .hero-grid {
+    gap: 35px;
   }
-
-  .top-meta {
+  .package-grid {
+    gap: 17px;
+  }
+  .card-image {
+    max-width: 165px;
+    max-height: 165px;
+  }
+  .card-image img {
+    max-height: 165px;
+  }
+  .card-summary {
+    align-items: start;
+    flex-direction: column;
     gap: 10px;
   }
-
+}
+/* =========================================================
+   17. CELULARES
+========================================================= */
+@media (max-width: 680px) {
+  .container {
+    width: calc(100% - 36px);
+  }
+  .topbar {
+    min-height: 68px;
+  }
+  .top-meta {
+    gap: 10px;
+    font-size: 7px;
+  }
+  .top-meta > span:first-child,
   .top-meta .status {
     display: none;
   }
-
-
-  /* Hero */
-
   .hero {
-    min-height: auto;
-    padding: 88px 0 76px;
+    padding: 95px 0 75px;
   }
-
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 34px;
   }
-
   .hero h1 {
-    font-size: clamp(62px, 16vw, 112px);
+    font-size: clamp(66px, 16vw, 108px);
   }
-
   .hero-side {
-    margin-left: 20%;
-    max-width: 330px;
+    margin-left: 14%;
+    max-width: 340px;
   }
-
   .hero-stamp {
-    left: auto;
-    right: 4%;
-    top: 28px;
-
-    width: 72px;
-    height: 72px;
-
+    top: 27px;
+    right: 8%;
+    width: 67px;
+    height: 67px;
     font-size: 7px;
   }
-
-  .hero-index {
-    display: none;
+  .owner-section {
+    grid-template-columns: 1fr;
+    gap: 42px;
+    padding: 20px 0 95px;
   }
-
-
-  /* Seção de serviços */
-
-  .section-head {
-    align-items: start;
+  .owner-visual {
+    width: min(90%, 410px);
+    margin-left: 8px;
+  }
+  .owner-copy h2 {
+    font-size: clamp(58px, 14vw, 82px);
+  }
+  .section-heading {
     flex-direction: column;
-    gap: 15px;
+    align-items: start;
+    gap: 18px;
+    padding-bottom: 27px;
   }
-
-
-  /* Pacotes */
-
-  .package {
-    grid-template-columns: 34px 1fr 38px;
-    grid-template-rows: auto auto auto auto;
-
-    gap: 12px;
-    padding: 18px 0;
+  .section-heading p {
+    max-width: 100%;
   }
-
-  .number {
-    grid-column: 1;
-    grid-row: 1 / 4;
+  .package-grid {
+    gap: 17px;
   }
-
-  .package-main {
-    grid-column: 2;
-    grid-row: 1;
+  .package-card:hover {
+    transform: translateY(-3px);
   }
-
-  .package-photo {
-    grid-column: 2 / 4;
-    grid-row: 2;
-
-    height: 170px;
+  .package-card > summary {
+    grid-template-columns: minmax(0, 1fr) minmax(96px, 132px);
+    column-gap: 18px;
+    min-height: 180px;
+    padding: 20px;
   }
-
-  .package-summary {
-    grid-column: 2 / 4;
-    grid-row: 3;
-
-    max-width: none;
+  .card-image {
+    max-width: 132px;
+    max-height: 150px;
   }
-
-  .expand {
-    grid-column: 3;
-    grid-row: 1;
+  .card-image img {
+    max-height: 150px;
   }
-
-  .details {
-    grid-column: 2 / 4;
-    grid-row: 4;
+  .card-title-area h3 {
+    font-size: clamp(22px, 5vw, 30px);
   }
-
-  .details-content {
+  .card-summary {
+    min-height: auto;
+    align-items: end;
+  }
+  .card-summary p {
+    max-width: 100%;
+  }
+  .package-detail {
+    padding: 21px 18px;
+  }
+  .manifesto {
     grid-template-columns: 1fr;
     gap: 22px;
+    padding: 80px 0;
   }
-
-
-  /* Vídeos */
-
-  .video-slot,
-  .video-empty {
-    min-height: 160px;
-  }
-
-
-  /* Manifesto */
-
-  .manifesto {
-    margin: 80px 0 70px;
-
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-
-  /* Rodapé */
-
   .footer {
     flex-direction: column;
+    gap: 13px;
+  }
+}
+@media (max-width: 420px) {
+  .package-card > summary {
+    grid-template-columns: minmax(0, 1fr) 94px;
+    column-gap: 12px;
+    min-height: 145px;
+    padding: 16px;
+  }
+  .card-top {
+    gap: 8px;
+    padding-right: 42px;
+  }
+  .card-tag {
+    font-size: 7px;
+    letter-spacing: .08em;
+  }
+  .card-title-area {
+    padding-right: 42px;
+  }
+  .card-title-area h3 {
+    font-size: clamp(19px, 5.2vw, 24px);
+  }
+  .expand-icon {
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+  .card-image {
+    max-width: 94px;
+    max-height: 120px;
+  }
+  .card-image img {
+    max-height: 120px;
+  }
+  .card-summary {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .card-summary .view-label {
+    font-size: 7px;
   }
 }
 
-
 /* =========================================================
-   17. ACESSIBILIDADE — MOVIMENTO REDUZIDO
+   BOTÃO (+) E IMAGEM — ÁREAS INDEPENDENTES
 ========================================================= */
 
+/* Card como referência de posicionamento */
+.package-card {
+  position: relative;
+}
+
+/* Botão (+) */
+.package-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  z-index: 5;
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid var(--paper-dark);
+  border-radius: 50%;
+
+  background: var(--paper-light);
+  color: var(--ink);
+
+  cursor: pointer;
+
+  transition:
+    transform .35s ease,
+    background .35s ease,
+    color .35s ease,
+    border-color .35s ease;
+}
+
+.package-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* Imagem do card */
+.package-preview {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 20px 65px 20px 20px;
+
+  box-sizing: border-box;
+}
+
+/* Imagem propriamente dita */
+.package-preview img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: 190px;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Animação do botão ao abrir */
+.package-card[open] .package-toggle {
+  transform: rotate(45deg);
+}
+
+/* Responsividade */
+@media (max-width: 680px) {
+  .package-toggle {
+    top: 14px;
+    right: 14px;
+
+    width: 34px;
+    height: 34px;
+  }
+
+  .package-preview {
+    padding: 55px 14px 14px;
+  }
+
+  .package-preview img {
+    max-height: 165px;
+  }
+}
+/* =========================================================
+   18. ACESSIBILIDADE
+========================================================= */
+.package-card summary:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     scroll-behavior: auto !important;
-    transition-duration: .01ms !important;
     animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
   }
 }
-
-
-  </style>
+</style>
 </head>
-
 <body>
-  <header class="shell topbar">
-    <a class="brand" href="#top" aria-label="Camila Domingues">Pacotes<span>.</span></a>
-
-    <div class="top-meta">
-      <span>Independent service menu</span>
-      <span class="status">Disponível para projetos</span>
-      <span>BR / 2026</span>
+<!-- =======================================================
+     CABEÇALHO
+======================================================= -->
+<header class="container topbar">
+  <a class="brand" href="#inicio" aria-label="Camila Domingues">
+    cd<span>.</span>
+  </a>
+  <div class="top-meta">
+    <span>Independent service menu</span>
+    <span class="status">Disponível para projetos</span>
+    <span>BR / 2026</span>
+  </div>
+</header>
+<main>
+<!-- =======================================================
+     HERO
+======================================================= -->
+<section class="container hero" id="inicio">
+  <div class="hero-stamp" aria-hidden="true">
+    IDEIAS<br>EM MOVIMENTO
+  </div>
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">
+        01 / Creative services · Digital presence
+      </span>
+      <h1>
+        Marcas<br>
+        com <em>presença.</em>
+      </h1>
     </div>
-  </header>
-
-  <main id="top" class="shell">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-stamp" aria-hidden="true">IDEIAS<br>EM MOVIMENTO</div>
-      <div class="hero-index">CAMILA DOMINGUES — SERVIÇOS & PACOTES</div>
-
-      <div class="hero-grid">
-        <div>
-          <span class="eyebrow">01 / Creative services · Digital presence</span>
-          <h1 id="hero-title">Marcas<br>com <em>presença.</em></h1>
+    <div class="hero-side">
+      <p>
+        Estratégia, criação e conteúdo para marcas que desejam
+        comunicar com intenção — e deixar uma impressão que permanece.
+      </p>
+      <a class="scroll-link" href="#apresentacao">
+        <span>↓</span>
+        CONHEÇA A PROFISSIONAL
+      </a>
+    </div>
+  </div>
+</section>
+<!-- =======================================================
+     APRESENTAÇÃO DA PROPRIETÁRIA
+======================================================= -->
+<section class="container owner-section reveal" id="apresentacao">
+  <div class="owner-visual">
+    <div class="owner-frame"></div>
+    <div class="owner-photo">
+      <img
+        src="Mila 4.jpeg"
+        alt="Camila Domingues"
+        loading="lazy"
+      >
+      <span class="owner-caption">
+        Camila Domingues · Creative Studio
+      </span>
+    </div>
+    <span class="owner-seal">CD</span>
+  </div>
+  <div class="owner-copy">
+    <span class="eyebrow">
+      02 / Quem está por trás da criação
+    </span>
+    <h2>
+      Prazer,<br>
+      sou <em>Camila.</em>
+    </h2>
+    <p class="owner-lead">
+      Criatividade, estratégia e sensibilidade para transformar
+      ideias em experiências visuais.
+    </p>
+    <p class="owner-description">
+      Cada marca tem uma história, uma personalidade e algo próprio
+      a comunicar. Meu trabalho é traduzir essa identidade em conteúdos
+      e soluções visuais pensados para aproximar marcas de pessoas.
+    </p>
+    <a class="scroll-link" href="#pacotes">
+      <span>↓</span>
+      CONHEÇA OS SERVIÇOS
+    </a>
+  </div>
+</section>
+<!-- =======================================================
+     SERVIÇOS E PACOTES
+======================================================= -->
+<section class="container services-section" id="pacotes">
+  <div class="section-heading reveal">
+    <div>
+      <span class="eyebrow">
+        03 / O que podemos criar juntos
+      </span>
+      <h2>
+        Serviços & pacotes<span class="accent">.</span>
+      </h2>
+    </div>
+    <p>
+      Cada serviço possui uma proposta própria. Explore os pacotes
+      para consultar valores, condições e detalhes de cada entrega.
+    </p>
+  </div>
+  <div class="package-grid">
+    <!-- ===================================================
+         PACOTE 01
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">01</span>
+          <span class="card-tag">CONTENT / RECORRENTE</span>
         </div>
-
-        <div class="hero-side">
-          <p>Estratégia, criação e conteúdo para marcas que desejam comunicar com intenção — e deixar uma impressão que permanece.</p>
-          <a class="scroll-link" href="#pacotes"><b>↓</b> EXPLORAR SERVIÇOS</a>
+        <div class="card-title-area">
+          <h3>Pacote Mensal — 1 vez por semana</h3>
+          <span class="expand-icon">+</span>
         </div>
-      </div>
-    </section>
-
-    <section id="pacotes" aria-labelledby="packages-title">
-      <div class="section-head">
-        <div>
-          <span class="eyebrow">02 / O que podemos criar juntos</span>
-          <h2 id="packages-title">Serviços & pacotes<span style="color:var(--accent)">.</span></h2>
+        <div class="card-image">
+          <img
+            src="aikibom.PNG"
+            alt="Produção de conteúdo para marcas"
+            loading="lazy"
+          >
         </div>
-
-        <p>Abra cada serviço para consultar valores, condições e detalhes. Cada proposta pode ser alinhada às necessidades do seu negócio.</p>
-      </div>
-
-      <div class="package-list" id="packageList"></div>
-    </section>
-
-    <section class="manifesto">
-      <span class="micro">03 / A intenção por trás de cada entrega</span>
-      <h2>Não é sobre aparecer mais. É sobre <em>comunicar melhor.</em></h2>
-    </section>
-  </main>
-
-  <footer class="shell footer">
-    <span>Camila Domingues · Serviços & Pacotes</span>
-    <span>Uma presença com intenção.</span>
-    <span>site feito para <a href="https://camilasdomingues.github.io/Camila-Domingues-Creative-Studio/">Mov.ByCamila © 2026</span></a>
-  </footer>
-
-  <script>
-    // Atualize este número com DDI + DDD + número, somente dígitos.
-    const whatsappNumber = '5511988869139';
-
-    // Para inserir um vídeo em um pacote, preencha video com o caminho do arquivo.
-    // Exemplo: video: 'videos/pacote-mensal.mp4'
-    const packages = [
-      {
-        id: '01',
-        tag: 'CONTENT / RECORRENTE',
-        title: 'Pacote Mensal — 1 vez por semana',
-        summary: 'Produção semanal de fotos e vídeos no estabelecimento, com entrega dos materiais prontos para publicação.',
-        image: 'https://images.unsplash.com/photo-1492619375914-88005aa9e8fb?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Equipamentos e ambiente de produção de conteúdo',
-        video: '',
-        content: `
-          <div class="price-line">
-            <span>Pacote mensal</span>
-            <strong>R$ 500,00</strong>
-            <span>1 visita por semana</span>
-          </div>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Visita ao local 1 vez por semana, em dia e horário previamente definidos de acordo com a disponibilidade de ambas as partes.</li>
-            <li>Produção de fotos e vídeos sem limite de quantidade durante o período de 3 horas por dia.</li>
-            <li>Prazo de até 2 dias para edição e entrega dos conteúdos. Vídeos com duração máxima de 3 minutos.</li>
-            <li>Os materiais serão entregues prontos para publicação.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>Não inclui gerenciamento do Instagram. A responsabilidade pela publicação dos conteúdos é do cliente.</li>
-            <li>Este pacote não inclui a participação da profissional como modelo nas gravações. O estabelecimento deverá disponibilizar funcionários para participação nos conteúdos.</li>
-            <li>Caso seja necessário levar uma pessoa como modelo para a produção de fotos e vídeos, será cobrado um valor adicional.</li>
-          </ul>`
-      },
-
-      {
-        id: '02',
-        tag: 'VIDEO / EDIÇÃO',
-        title: 'Vídeo Avulso & Edição de Vídeo',
-        summary: 'Produção de um vídeo específico ou edição profissional de materiais que você já gravou.',
-        image: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Câmera fotográfica usada em produção audiovisual',
-        video: '',
-        content: `
-          <h4>01. Vídeo unitário</h4>
-          <div class="price-line">
-            <span>Vídeo unitário</span>
-            <strong>R$ 100,00</strong>
-          </div>
-
-          <p>Ideal para quem precisa de um vídeo específico para divulgar produtos, serviços, campanhas ou ações do estabelecimento.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Deslocamento até o estabelecimento.</li>
-            <li>Captação de vídeos (takes) para a produção do conteúdo.</li>
-            <li>Edição de 1 vídeo de até 5 minutos.</li>
-            <li>Até 3 horas de permanência no local para captação do material.</li>
-            <li>Prazo de até 2 dias para edição e entrega.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>O pacote não inclui a participação da profissional como modelo. O estabelecimento deverá disponibilizar funcionários ou participantes para aparecer no vídeo.</li>
-            <li>Caso seja necessário levar uma pessoa como modelo, será cobrado um valor adicional.</li>
-            <li>Vídeos com mais de 5 minutos terão acréscimo de R$ 30,00 por minuto excedente.</li>
-            <li>Alterações no vídeo são permitidas. Caso seja necessário refazer praticamente toda a edição, será cobrado R$ 50,00 por uma nova edição.</li>
-          </ul>
-
-          <h4>02. Edição de vídeo</h4>
-          <div class="price-line">
-            <span>Edição unitária</span>
-            <strong>R$ 50,00</strong>
-          </div>
-
-          <p>Ideal para quem já possui fotos e vídeos gravados e precisa apenas de uma edição profissional para divulgar seu negócio.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Edição de 1 vídeo de até 3 minutos.</li>
-            <li>O cliente deverá enviar os materiais brutos (vídeos), sem necessidade de cortes ou organização prévia.</li>
-            <li>Montagem e organização dos trechos para compor o vídeo.</li>
-            <li>Prazo de até 2 dias para edição e entrega.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>Serviço realizado exclusivamente em home office.</li>
-            <li>Não inclui deslocamento ou captação de imagens no estabelecimento.</li>
-            <li>O limite de duração é de 3 minutos para o vídeo finalizado.</li>
-          </ul>`
-      },
-
-      {
-        id: '03',
-        tag: 'CREATOR / BRAND',
-        title: 'Produção de Conteúdo como Modelo',
-        summary: 'Sua marca apresentada por uma profissional em fotos e vídeos com presença, naturalidade e personalidade.',
-        image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Retrato editorial de modelo',
-        video: '',
-        content: `
-          <div class="price-line">
-            <span>Valor por diária</span>
-            <strong>R$ 200,00</strong>
-          </div>
-
-          <p>Ideal para lojas e marcas que desejam utilizar a imagem de uma profissional para apresentar, experimentar e divulgar seus produtos ou serviços de forma mais próxima e atrativa.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Utilização da minha imagem na produção dos conteúdos da marca.</li>
-            <li>Deslocamento até o estabelecimento.</li>
-            <li>Participação como modelo, experimentando, vestindo e apresentando os produtos.</li>
-            <li>Produção de fotos com edição inclusa.</li>
-            <li>Gravação de vídeos para divulgação da marca, entregues sem edição.</li>
-            <li>Até 3 horas de produção no local.</li>
-            <li>Quantidade de conteúdos conforme o que for possível produzir dentro do período contratado, de acordo com as necessidades previamente alinhadas.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>A edição dos vídeos não está inclusa no valor da diária.</li>
-            <li>Caso queira receber os vídeos editados, será cobrado R$ 50,00 por vídeo.</li>
-            <li>A marca poderá utilizar as fotos e os vídeos produzidos em suas redes sociais e materiais de divulgação.</li>
-          </ul>`
-      },
-
-      {
-        id: '04',
-        tag: 'SOCIAL / MANAGEMENT',
-        title: 'Social Media',
-        summary: 'Gerenciamento e produção de conteúdo para uma presença digital ativa, profissional e estratégica.',
-        image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Ambiente digital e redes sociais',
-        video: '',
-        content: `
-          <h4>Investimento mensal</h4>
-
-          <div class="price-grid">
-            <div class="price-option">
-              <span>1 rede social</span>
-              <strong>R$ 800,00</strong>
-            </div>
-            <div class="price-option">
-              <span>2 redes sociais</span>
-              <strong>R$ 1.000,00</strong>
-            </div>
-          </div>
-
-          <p>Serviço de gerenciamento e produção de conteúdo para marcas que desejam manter uma presença digital ativa, profissional e estratégica nas redes sociais.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Gerenciamento de Instagram ou TikTok, conforme a quantidade de redes sociais contratadas.</li>
-            <li>Acesso às contas para realização do gerenciamento.</li>
-            <li>Publicação de conteúdos de segunda a domingo, conforme o planejamento, a necessidade da marca e seu horário de funcionamento.</li>
-            <li>1 visita semanal ao estabelecimento para produção de conteúdo.</li>
-            <li>Até 3 horas de captação por semana.</li>
-            <li>Criação e publicação de Stories.</li>
-            <li>Criação e publicação de conteúdos para o feed.</li>
-            <li>Criação de artes e materiais gráficos para as redes sociais.</li>
-            <li>Acompanhamento e resposta às mensagens recebidas pelo Direct (DM) e aos comentários, seguindo a comunicação e as orientações alinhadas com o cliente.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>O valor de R$ 800,00 contempla o gerenciamento de 1 rede social.</li>
-            <li>Para o gerenciamento de 2 redes sociais (Instagram e TikTok), o investimento mensal será de R$ 1.000,00.</li>
-            <li>O atendimento às mensagens e aos comentários será realizado em horário comercial.</li>
-            <li>Artes e materiais gráficos de maior complexidade, que exijam um processo de criação mais elaborado e detalhado, terão custo adicional de R$ 30,00 por peça.</li>
-            <li>O pacote não inclui a participação da profissional como modelo nos conteúdos. O estabelecimento deverá disponibilizar funcionários ou participantes para as gravações.</li>
-            <li>Caso seja necessária a participação da profissional como modelo em fotos e vídeos, será cobrado um valor adicional.</li>
-            <li>O planejamento e a comunicação dos conteúdos serão alinhados previamente com o cliente.</li>
-          </ul>`
-      },
-
-      {
-        id: '05',
-        tag: 'PRODUCTION / ON LOCATION',
-        title: 'Diária de Produção de Conteúdo',
-        summary: 'Um dia de captação para produzir diferentes materiais e manter os canais da marca sempre atualizados.',
-        image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Estação de trabalho para criação e produção digital',
-        video: '',
-        content: `
-          <h4>Opções de diária</h4>
-
-          <div class="price-grid">
-            <div class="price-option">
-              <span>3 horas</span>
-              <strong>R$ 250,00</strong>
-            </div>
-            <div class="price-option">
-              <span>5 horas</span>
-              <strong>R$ 400,00</strong>
-            </div>
-          </div>
-
-          <p>Ideal para marcas que desejam aproveitar um único dia de produção para captar diversos conteúdos e manter suas redes sociais sempre atualizadas.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Deslocamento até o estabelecimento.</li>
-            <li>Captação de fotos e vídeos para divulgação da marca.</li>
-            <li>Edição das fotos e dos vídeos produzidos.</li>
-            <li>Disponibilidade durante todo o período contratado para produção de diferentes conteúdos.</li>
-            <li>Quantidade de conteúdos conforme o tempo disponível e a complexidade das produções.</li>
-          </ul>
-
-          <h5>Estimativa de produção</h5>
-          <ul>
-            <li>Diária de 3 horas: aproximadamente 3 vídeos, além das fotos.</li>
-            <li>Diária de 5 horas: aproximadamente 5 a 8 vídeos, além das fotos.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>O pacote não inclui a participação da profissional como modelo. O estabelecimento deverá disponibilizar funcionários ou participantes para aparecer nos conteúdos.</li>
-            <li>Caso seja necessário levar uma pessoa como modelo, será cobrado um valor adicional.</li>
-            <li>Prazo de até 2 dias para edição e entrega dos conteúdos.</li>
-            <li>As quantidades de vídeos são estimativas e podem variar conforme o tipo de produção.</li>
-          </ul>`
-      },
-
-      {
-        id: '06',
-        tag: 'EVENT / REAL TIME',
-        title: 'Pacote Story Maker',
-        summary: 'Cobertura de eventos com registros espontâneos, Stories em tempo real e compilado dos melhores momentos.',
-        image: 'https://images.unsplash.com/photo-1503428593586-e225b39bddfe?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Evento com público e iluminação de palco',
-        video: '',
-        content: `
-          <div class="price-line">
-            <span>Até 3 horas</span>
-            <strong>R$ 350,00</strong>
-            <span>Hora adicional: R$ 70,00</span>
-          </div>
-
-          <p>Ideal para aniversários, casamentos, formaturas, palestras e outros eventos em que o cliente deseja registrar e compartilhar os melhores momentos em tempo real, mantendo suas redes sociais ativas durante o evento.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Cobertura do evento por meio de fotos e vídeos para os Stories.</li>
-            <li>Captação de bastidores, momentos espontâneos e principais acontecimentos.</li>
-            <li>Produção e publicação de Stories em tempo real, acompanhando o andamento do evento.</li>
-            <li>Utilização da rede social escolhida pelo cliente para realizar a cobertura.</li>
-            <li>Criação de um Destaque no Instagram para organizar e manter os registros do evento disponíveis no perfil.</li>
-            <li>Entrega das fotos e dos vídeos gravados durante o evento.</li>
-            <li>Edição e entrega de um vídeo compilado com os principais momentos, com duração de 3 a 5 minutos.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>O cliente deverá disponibilizar o acesso à rede social escolhida para a realização da cobertura.</li>
-            <li>A publicação dos Stories será realizada em tempo real, seguindo as orientações previamente alinhadas e a liberdade criativa da profissional.</li>
-            <li>O pacote contempla até 3 horas de cobertura.</li>
-            <li>Caso o evento ultrapasse o período contratado, será cobrado R$ 70,00 por hora adicional.</li>
-            <li>O período de cobertura deverá ser combinado previamente.</li>
-            <li>A entrega do material gravado e do vídeo compilado será realizada após o evento.</li>
-          </ul>
-
-          <h5>Condições especiais para eventos longos</h5>
-          <p>Para eventos com duração de 6 horas ou mais, podemos conversar e negociar um valor especial para a cobertura completa, oferecendo uma condição diferenciada em vez da cobrança individual por hora adicional. O objetivo é encontrar um valor que seja vantajoso para ambas as partes.</p>`
-      },
-
-      {
-        id: '07',
-        tag: 'DESIGN / COMMUNICATION',
-        title: 'Design Gráfico e Materiais de Divulgação',
-        summary: 'Artes personalizadas para divulgar produtos, serviços, campanhas e eventos em formatos digitais ou impressos.',
-        image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Tela de computador com projeto de design gráfico',
-        video: '',
-        content: `
-          <p>Criação de artes personalizadas para empresas, marcas e profissionais que desejam divulgar seus produtos, serviços, campanhas e eventos por meio de materiais digitais ou impressos. As criações podem ser utilizadas em redes sociais, WhatsApp, materiais de divulgação e impressões gráficas.</p>
-
-          <h5>Alguns tipos de materiais disponíveis</h5>
-          <ul>
-            <li>Flyers digitais e para impressão.</li>
-            <li>Artes promocionais e ofertas.</li>
-            <li>Divulgação de produtos e serviços.</li>
-            <li>Campanhas publicitárias.</li>
-            <li>Artes para datas comemorativas.</li>
-            <li>Divulgação de eventos, festas e inaugurações.</li>
-            <li>Cartazes e panfletos.</li>
-            <li>Artes institucionais e informativas.</li>
-            <li>Carrosséis para Instagram.</li>
-            <li>Materiais personalizados de acordo com a necessidade de cada cliente.</li>
-          </ul>
-
-          <h4>01. Design unitário</h4>
-          <div class="price-line">
-            <span>Por arte</span>
-            <strong>R$ 30,00</strong>
-          </div>
-
-          <h4>02. Pacotes de designs</h4>
-          <div class="price-grid">
-            <div class="price-option">
-              <span>5 artes individuais</span>
-              <strong>R$ 135,00</strong>
-            </div>
-            <div class="price-option">
-              <span>10 artes individuais</span>
-              <strong>R$ 250,00</strong>
-            </div>
-          </div>
-
-          <h4>03. Carrossel</h4>
-          <div class="price-grid">
-            <div class="price-option">
-              <span>Até 5 páginas</span>
-              <strong>R$ 90,00</strong>
-            </div>
-            <div class="price-option">
-              <span>Até 6 páginas</span>
-              <strong>R$ 110,00</strong>
-            </div>
-            <div class="price-option">
-              <span>7 páginas ou mais</span>
-              <strong>A combinar</strong>
-            </div>
-          </div>
-
-          <h5>Como funciona a criação?</h5>
-          <ul>
-            <li>Alinhamento inicial para entender a ideia, finalidade e expectativas do cliente.</li>
-            <li>Definição de cores, referências e identidade visual.</li>
-            <li>O cliente deverá fornecer as informações necessárias para a criação.</li>
-            <li>Sugestões e direcionamentos criativos poderão ser oferecidos durante o processo.</li>
-            <li>Desenvolvimento personalizado de acordo com a proposta de cada material.</li>
-          </ul>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>Os pacotes de 5 e 10 artes contemplam materiais individuais, não incluindo carrosséis.</li>
-            <li>Pequenos ajustes poderão ser realizados sem custo adicional.</li>
-            <li>Mudanças completas na proposta inicial ou solicitações de uma nova criação terão cobrança de R$ 35,00 por nova arte.</li>
-            <li>Novas criações de carrosséis serão orçadas conforme a quantidade de páginas e complexidade.</li>
-            <li>Caso o material seja destinado à impressão, as especificações de formato e tamanho deverão ser alinhadas previamente.</li>
-          </ul>`
-      },
-
-      {
-        id: '08',
-        tag: 'BRANDING / IDENTITY',
-        title: 'Criação de Logotipo e Identidade Visual',
-        summary: 'Construção de uma identidade visual personalizada para expressar a essência, a personalidade e o profissionalismo da marca.',
-        image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=85',
-        alt: 'Composição de identidade visual e materiais de marca',
-        video: '',
-        content: `
-          <p>Desenvolvimento de logotipos e identidades visuais personalizadas para empreendedores, profissionais e empresas que desejam criar ou renovar a imagem da sua marca, transmitindo sua essência, personalidade e profissionalismo.</p>
-
-          <h4>01. Criação de logotipo</h4>
-          <p>Ideal para quem precisa de uma logo personalizada para representar seu negócio.</p>
-
-          <h5>Opções e valores</h5>
-          <div class="price-grid">
-            <div class="price-option">
-              <span>1 proposta de logotipo</span>
-              <strong>R$ 20,00</strong>
-            </div>
-            <div class="price-option">
-              <span>2 propostas de logotipo</span>
-              <strong>R$ 30,00</strong>
-            </div>
-            <div class="price-option">
-              <span>Proposta adicional</span>
-              <strong>R$ 10,00</strong>
-            </div>
-          </div>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Reunião inicial com o cliente para entender o negócio, suas preferências, referências e a ideia que deseja transmitir com a logo.</li>
-            <li>Desenvolvimento da quantidade de propostas escolhida.</li>
-            <li>Escolha de uma das propostas apresentadas.</li>
-            <li>1 ajuste simples na proposta selecionada.</li>
-            <li>Entrega do logotipo em PNG.</li>
-          </ul>
-
-          <h4>02. Identidade Visual Essencial</h4>
-          <div class="price-line">
-            <span>Projeto completo</span>
-            <strong>R$ 280,00</strong>
-          </div>
-
-          <p>Ideal para quem está começando um negócio do zero ou deseja construir uma identidade visual mais completa e profissional, com os principais elementos necessários para apresentar sua marca no ambiente digital.</p>
-
-          <h5>O que está incluso</h5>
-          <ul>
-            <li>Reunião inicial de planejamento com o cliente para conhecer o negócio, entender seus objetivos, público, preferências e referências.</li>
-            <li>Até 2 propostas iniciais de logotipo.</li>
-            <li>Desenvolvimento do logotipo principal.</li>
-            <li>Variações da logo: circular, vertical e horizontal.</li>
-            <li>Paleta de cores personalizada.</li>
-            <li>Escolha de tipografias que representem a identidade da marca.</li>
-            <li>Elementos gráficos e símbolos personalizados.</li>
-            <li>Imagem de perfil adaptada a partir do logotipo.</li>
-            <li>5 capas personalizadas para os destaques do Instagram.</li>
-            <li>3 artes iniciais para publicações no Instagram, como bônus, com temas e conteúdos definidos em conjunto com o cliente.</li>
-            <li>Mini manual de identidade visual, com orientações básicas de aplicação da marca.</li>
-            <li>Arquivos finais em PNG, organizados e entregues por meio do Google Drive.</li>
-          </ul>
-
-          <h5>Orientação inicial para o Instagram</h5>
-          <p>Além da criação visual, o cliente também recebe uma orientação inicial para começar a apresentar sua marca no Instagram, incluindo:</p>
-
-          <ul>
-            <li>Auxílio na elaboração e organização da bio.</li>
-            <li>Orientação sobre a escolha de uma foto de perfil adequada à marca.</li>
-            <li>Sugestões iniciais de frequência e dias para realizar publicações.</li>
-            <li>Dicas para organizar a apresentação inicial do perfil.</li>
-          </ul>
-
-          <p>Essa orientação tem como objetivo ajudar o cliente a dar os primeiros passos com a marca no ambiente digital. Não inclui administração do Instagram, publicações contínuas ou gerenciamento de redes sociais.</p>
-
-          <h5>Informações importantes</h5>
-          <ul>
-            <li>A reunião inicial faz parte dos dois serviços e é realizada em conjunto com o cliente antes do início da criação.</li>
-            <li>Todo o desenvolvimento é pensado de acordo com a proposta, as características e a personalidade de cada marca.</li>
-            <li>As propostas iniciais são conceitos para que o cliente escolha a direção visual que mais combina com seu negócio.</li>
-            <li>O pacote de Identidade Visual Essencial é um projeto de criação e estruturação inicial da marca, não um serviço de gerenciamento de redes sociais.</li>
-            <li>Serviços adicionais, como novas artes, publicações recorrentes e gerenciamento do Instagram, podem ser contratados separadamente.</li>
-            <li>A entrega é feita de forma digital, pelo Google Drive.</li>
-          </ul>`
-      }
-    ];
-
-    const packageList = document.getElementById('packageList');
-
-    function renderPackage(item) {
-      const article = document.createElement('article');
-      article.className = 'package';
-      article.dataset.package = item.id;
-
-      article.innerHTML = `
-        <span class="number">${item.id}</span>
-
-        <div class="package-main">
-          <span class="package-tag">${item.tag}</span>
-          <h3>${item.title}</h3>
+        <div class="card-summary">
+          <p>
+            Produção semanal de fotos e vídeos no estabelecimento,
+            com entrega dos materiais prontos para publicação.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
         </div>
-
-        <div class="package-photo">
-          <img src="${item.image}" alt="${item.alt}" loading="lazy">
-        </div>
-
-        <p class="package-summary">${item.summary}</p>
-
-        <button
-          class="expand"
-          type="button"
-          aria-expanded="false"
-          aria-label="Expandir ${item.title}"
-        >+</button>
-
-        <div class="details">
-          <div class="details-inner">
-            <div class="details-content">
-              <div class="package-description">${item.content}</div>
-
-              <div
-                class="video-slot"
-                data-video="${item.video}"
-                aria-label="Espaço para vídeo de apresentação do pacote"
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <div class="price-line">
+                <span>Pacote mensal</span>
+                <strong>R$ 500,00</strong>
+                <span>1 visita por semana</span>
+              </div>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Visita ao local 1 vez por semana, em dia e horário previamente definidos de acordo com a disponibilidade de ambas as partes.</li>
+                <li>Produção de fotos e vídeos sem limite de quantidade durante o período de 3 horas por dia.</li>
+                <li>Prazo de até 2 dias para edição e entrega dos conteúdos. Vídeos com duração máxima de 3 minutos.</li>
+                <li>Os materiais serão entregues prontos para publicação.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>Não inclui gerenciamento do Instagram. A responsabilidade pela publicação dos conteúdos é do cliente.</li>
+                <li>Este pacote não inclui a participação da profissional como modelo nas gravações. O estabelecimento deverá disponibilizar funcionários para participação nos conteúdos.</li>
+                <li>Caso seja necessário levar uma pessoa como modelo para a produção de fotos e vídeos, será cobrado um valor adicional.</li>
+              </ul>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Produção de conteúdo</span>
+              </figcaption>
+              <img
+                src=""
+                alt="Imagem complementar do pacote mensal"
+                loading="lazy"
               >
-                <div class="video-empty">
-                  <span class="play-mark" aria-hidden="true">▶</span>
-                  <strong>Vídeo de apresentação</strong>
-                  <small>Espaço reservado para inserir o vídeo deste serviço</small>
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="avulso.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20no%20Pacote%20Mensal%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 02
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">02</span>
+          <span class="card-tag">VIDEO / EDIÇÃO</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Vídeo Avulso & Edição de Vídeo</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="imagens/pacote-02-01.jpg"
+            alt="Produção audiovisual"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Produção de um vídeo específico ou edição profissional
+            de materiais que você já gravou.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <h4>01. Vídeo unitário</h4>
+              <div class="price-line">
+                <span>Vídeo unitário</span>
+                <strong>R$ 100,00</strong>
+              </div>
+              <p>
+                Ideal para quem precisa de um vídeo específico para divulgar
+                produtos, serviços, campanhas ou ações do estabelecimento.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Deslocamento até o estabelecimento.</li>
+                <li>Captação de vídeos (takes) para a produção do conteúdo.</li>
+                <li>Edição de 1 vídeo de até 5 minutos.</li>
+                <li>Até 3 horas de permanência no local para captação do material.</li>
+                <li>Prazo de até 2 dias para edição e entrega.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>O pacote não inclui a participação da profissional como modelo. O estabelecimento deverá disponibilizar funcionários ou participantes para aparecer no vídeo.</li>
+                <li>Caso seja necessário levar uma pessoa como modelo, será cobrado um valor adicional.</li>
+                <li>Vídeos com mais de 5 minutos terão acréscimo de R$ 30,00 por minuto excedente.</li>
+                <li>Alterações no vídeo são permitidas. Caso seja necessário refazer praticamente toda a edição, será cobrado R$ 50,00 por uma nova edição.</li>
+              </ul>
+              <h4>02. Edição de vídeo</h4>
+              <div class="price-line">
+                <span>Edição unitária</span>
+                <strong>R$ 50,00</strong>
+              </div>
+              <p>
+                Ideal para quem já possui fotos e vídeos gravados e precisa
+                apenas de uma edição profissional para divulgar seu negócio.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Edição de 1 vídeo de até 3 minutos.</li>
+                <li>O cliente deverá enviar os materiais brutos (vídeos), sem necessidade de cortes ou organização prévia.</li>
+                <li>Montagem e organização dos trechos para compor o vídeo.</li>
+                <li>Prazo de até 2 dias para edição e entrega.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>Serviço realizado exclusivamente em home office.</li>
+                <li>Não inclui deslocamento ou captação de imagens no estabelecimento.</li>
+                <li>O limite de duração é de 3 minutos para o vídeo finalizado.</li>
+              </ul>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Produção audiovisual</span>
+              </figcaption>
+              <img
+                src="imagens/pacote-02-02.jpg"
+                alt="Imagem complementar de produção de vídeo"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="Cas2.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20em%20V%C3%ADdeo%20Avulso%20e%20Edi%C3%A7%C3%A3o%20de%20V%C3%ADdeo."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 03
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">03</span>
+          <span class="card-tag">CREATOR / BRAND</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Produção de Conteúdo como Modelo</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="Mila 5.jpeg"
+            alt="Produção de conteúdo com modelo"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Sua marca apresentada por uma profissional em fotos e vídeos
+            com presença, naturalidade e personalidade.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <div class="price-line">
+                <span>Valor por diária</span>
+                <strong>R$ 200,00</strong>
+              </div>
+              <p>
+                Ideal para lojas e marcas que desejam utilizar a imagem
+                de uma profissional para apresentar, experimentar e divulgar
+                seus produtos ou serviços de forma mais próxima e atrativa.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Utilização da minha imagem na produção dos conteúdos da marca.</li>
+                <li>Deslocamento até o estabelecimento.</li>
+                <li>Participação como modelo, experimentando, vestindo e apresentando os produtos.</li>
+                <li>Produção de fotos com edição inclusa.</li>
+                <li>Gravação de vídeos para divulgação da marca, entregues sem edição.</li>
+                <li>Até 3 horas de produção no local.</li>
+                <li>Quantidade de conteúdos conforme o que for possível produzir dentro do período contratado, de acordo com as necessidades previamente alinhadas.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>A edição dos vídeos não está inclusa no valor da diária.</li>
+                <li>Caso queira receber os vídeos editados, será cobrado R$ 50,00 por vídeo.</li>
+                <li>A marca poderá utilizar as fotos e os vídeos produzidos em suas redes sociais e materiais de divulgação.</li>
+              </ul>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Creator & Brand</span>
+              </figcaption>
+              <img
+                src="Mila 6.jpeg"
+                alt="Imagem complementar de produção como modelo"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="videos/pacote-03.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20na%20Produ%C3%A7%C3%A3o%20de%20Conte%C3%BAdo%20como%20Modelo."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 04
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">04</span>
+          <span class="card-tag">SOCIAL / MANAGEMENT</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Social Media</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="SM1.PNG"
+            alt="Gerenciamento de redes sociais"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Gerenciamento e produção de conteúdo para uma presença digital
+            ativa, profissional e estratégica.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <h4>Investimento mensal</h4>
+              <div class="price-grid">
+                <div class="price-option">
+                  <span>1 rede social</span>
+                  <strong>R$ 800,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>2 redes sociais</span>
+                  <strong>R$ 1.000,00</strong>
                 </div>
               </div>
-
-              <a
-                class="whatsapp-cta"
-                href="#"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Conversar sobre este pacote <span aria-hidden="true">↗</span>
-              </a>
+              <p>
+                Serviço de gerenciamento e produção de conteúdo para marcas
+                que desejam manter uma presença digital ativa, profissional
+                e estratégica nas redes sociais.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Gerenciamento de Instagram ou TikTok, conforme a quantidade de redes sociais contratadas.</li>
+                <li>Acesso às contas para realização do gerenciamento.</li>
+                <li>Publicação de conteúdos de segunda a domingo, conforme o planejamento, a necessidade da marca e seu horário de funcionamento.</li>
+                <li>1 visita semanal ao estabelecimento para produção de conteúdo.</li>
+                <li>Até 3 horas de captação por semana.</li>
+                <li>Criação e publicação de Stories.</li>
+                <li>Criação e publicação de conteúdos para o feed.</li>
+                <li>Criação de artes e materiais gráficos para as redes sociais.</li>
+                <li>Acompanhamento e resposta às mensagens recebidas pelo Direct (DM) e aos comentários, seguindo a comunicação e as orientações alinhadas com o cliente.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>O valor de R$ 800,00 contempla o gerenciamento de 1 rede social.</li>
+                <li>Para o gerenciamento de 2 redes sociais (Instagram e TikTok), o investimento mensal será de R$ 1.000,00.</li>
+                <li>O atendimento às mensagens e aos comentários será realizado em horário comercial.</li>
+                <li>Artes e materiais gráficos de maior complexidade, que exijam um processo de criação mais elaborado e detalhado, terão custo adicional de R$ 30,00 por peça.</li>
+                <li>O pacote não inclui a participação da profissional como modelo nos conteúdos. O estabelecimento deverá disponibilizar funcionários ou participantes para as gravações.</li>
+                <li>Caso seja necessária a participação da profissional como modelo em fotos e vídeos, será cobrado um valor adicional.</li>
+                <li>O planejamento e a comunicação dos conteúdos serão alinhados previamente com o cliente.</li>
+              </ul>
             </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Social Media</span>
+              </figcaption>
+              <img
+                src="SM2.PNG"
+                alt="Imagem complementar de social media"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="SM3.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20no%20servi%C3%A7o%20de%20Social%20Media."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
           </div>
-        </div>`;
-
-      const button = article.querySelector('.expand');
-      const whatsappLink = article.querySelector('.whatsapp-cta');
-
-      const message = `Olá, Camila! Tenho interesse em "${item.title}" e gostaria de receber mais informações sobre valores, detalhes e disponibilidade.`;
-
-      whatsappLink.href =
-        `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-      whatsappLink.setAttribute(
-        'aria-label',
-        `Conversar com Camila pelo WhatsApp sobre ${item.title}`
-      );
-
-      // Se o campo video receber um caminho, o espaço reservado vira um player funcional.
-      const videoSlot = article.querySelector('.video-slot');
-
-      if (item.video.trim()) {
-        const video = document.createElement('video');
-        video.controls = true;
-        video.playsInline = true;
-        video.preload = 'metadata';
-
-        const source = document.createElement('source');
-        source.src = item.video;
-        source.type = 'video/mp4';
-
-        video.appendChild(source);
-        videoSlot.replaceChildren(video);
-      }
-
-      button.addEventListener('click', () => {
-        const isOpen = article.classList.toggle('is-open');
-
-        button.setAttribute('aria-expanded', String(isOpen));
-        button.setAttribute(
-          'aria-label',
-          `${isOpen ? 'Recolher' : 'Expandir'} ${item.title}`
-        );
-      });
-
-      return article;
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 05
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">05</span>
+          <span class="card-tag">PRODUCTION / ON LOCATION</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Diária de Produção de Conteúdo</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="DrLuiz.JPG"
+            alt="Estação de trabalho para produção digital"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Um dia de captação para produzir diferentes materiais e manter
+            os canais da marca sempre atualizados.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <h4>Opções de diária</h4>
+              <div class="price-grid">
+                <div class="price-option">
+                  <span>3 horas</span>
+                  <strong>R$ 250,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>5 horas</span>
+                  <strong>R$ 400,00</strong>
+                </div>
+              </div>
+              <p>
+                Ideal para marcas que desejam aproveitar um único dia de
+                produção para captar diversos conteúdos e manter suas redes
+                sociais sempre atualizadas.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Deslocamento até o estabelecimento.</li>
+                <li>Captação de fotos e vídeos para divulgação da marca.</li>
+                <li>Edição das fotos e dos vídeos produzidos.</li>
+                <li>Disponibilidade durante todo o período contratado para produção de diferentes conteúdos.</li>
+                <li>Quantidade de conteúdos conforme o tempo disponível e a complexidade das produções.</li>
+              </ul>
+              <h5>Estimativa de produção</h5>
+              <ul>
+                <li>Diária de 3 horas: aproximadamente 3 vídeos, além das fotos.</li>
+                <li>Diária de 5 horas: aproximadamente 5 a 8 vídeos, além das fotos.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>O pacote não inclui a participação da profissional como modelo. O estabelecimento deverá disponibilizar funcionários ou participantes para aparecer nos conteúdos.</li>
+                <li>Caso seja necessário levar uma pessoa como modelo, será cobrado um valor adicional.</li>
+                <li>Prazo de até 2 dias para edição e entrega dos conteúdos.</li>
+                <li>As quantidades de vídeos são estimativas e podem variar conforme o tipo de produção.</li>
+              </ul>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Produção de conteúdo</span>
+              </figcaption>
+              <img
+                src="eqp.JPG"
+                alt="Imagem complementar da diária de produção"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="videos/pacote-05.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20na%20Di%C3%A1ria%20de%20Produ%C3%A7%C3%A3o%20de%20Conte%C3%BAdo."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 06
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">06</span>
+          <span class="card-tag">EVENT / REAL TIME</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Pacote Story Maker</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="imagens/pacote-06-01.jpg"
+            alt="Evento com público e iluminação de palco"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Cobertura de eventos com registros espontâneos, Stories em tempo
+            real e compilado dos melhores momentos.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <div class="price-line">
+                <span>Até 3 horas</span>
+                <strong>R$ 350,00</strong>
+                <span>Hora adicional: R$ 70,00</span>
+              </div>
+              <p>
+                Ideal para aniversários, casamentos, formaturas, palestras
+                e outros eventos em que o cliente deseja registrar e
+                compartilhar os melhores momentos em tempo real, mantendo
+                suas redes sociais ativas durante o evento.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Cobertura do evento por meio de fotos e vídeos para os Stories.</li>
+                <li>Captação de bastidores, momentos espontâneos e principais acontecimentos.</li>
+                <li>Produção e publicação de Stories em tempo real, acompanhando o andamento do evento.</li>
+                <li>Utilização da rede social escolhida pelo cliente para realizar a cobertura.</li>
+                <li>Criação de um Destaque no Instagram para organizar e manter os registros do evento disponíveis no perfil.</li>
+                <li>Entrega das fotos e dos vídeos gravados durante o evento.</li>
+                <li>Edição e entrega de um vídeo compilado com os principais momentos, com duração de 3 a 5 minutos.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>O cliente deverá disponibilizar o acesso à rede social escolhida para a realização da cobertura.</li>
+                <li>A publicação dos Stories será realizada em tempo real, seguindo as orientações previamente alinhadas e a liberdade criativa da profissional.</li>
+                <li>O pacote contempla até 3 horas de cobertura.</li>
+                <li>Caso o evento ultrapasse o período contratado, será cobrado R$ 70,00 por hora adicional.</li>
+                <li>O período de cobertura deverá ser combinado previamente.</li>
+                <li>A entrega do material gravado e do vídeo compilado será realizada após o evento.</li>
+              </ul>
+              <h5>Condições especiais para eventos longos</h5>
+              <p>
+                Para eventos com duração de 6 horas ou mais, podemos conversar
+                e negociar um valor especial para a cobertura completa,
+                oferecendo uma condição diferenciada em vez da cobrança
+                individual por hora adicional. O objetivo é encontrar um
+                valor que seja vantajoso para ambas as partes.
+              </p>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Story Maker</span>
+              </figcaption>
+              <img
+                src="imagens/pacote-06-02.jpg"
+                alt="Imagem complementar de cobertura de eventos"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="Cas.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20no%20Pacote%20Story%20Maker."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 07
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">07</span>
+          <span class="card-tag">DESIGN / COMMUNICATION</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Design Gráfico e Materiais de Divulgação</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="DG1.PNG"
+            alt="Projeto de design gráfico"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Artes personalizadas para divulgar produtos, serviços,
+            campanhas e eventos em formatos digitais ou impressos.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <p>
+                Criação de artes personalizadas para empresas, marcas e
+                profissionais que desejam divulgar seus produtos, serviços,
+                campanhas e eventos por meio de materiais digitais ou
+                impressos. As criações podem ser utilizadas em redes sociais,
+                WhatsApp, materiais de divulgação e impressões gráficas.
+              </p>
+              <h5>Alguns tipos de materiais disponíveis</h5>
+              <ul>
+                <li>Flyers digitais e para impressão.</li>
+                <li>Artes promocionais e ofertas.</li>
+                <li>Divulgação de produtos e serviços.</li>
+                <li>Campanhas publicitárias.</li>
+                <li>Artes para datas comemorativas.</li>
+                <li>Divulgação de eventos, festas e inaugurações.</li>
+                <li>Cartazes e panfletos.</li>
+                <li>Artes institucionais e informativas.</li>
+                <li>Carrosséis para Instagram.</li>
+                <li>Materiais personalizados de acordo com a necessidade de cada cliente.</li>
+              </ul>
+              <h4>01. Design unitário</h4>
+              <div class="price-line">
+                <span>Por arte</span>
+                <strong>R$ 30,00</strong>
+              </div>
+              <h4>02. Pacotes de designs</h4>
+              <div class="price-grid">
+                <div class="price-option">
+                  <span>5 artes individuais</span>
+                  <strong>R$ 135,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>10 artes individuais</span>
+                  <strong>R$ 250,00</strong>
+                </div>
+              </div>
+              <h4>03. Carrossel</h4>
+              <div class="price-grid">
+                <div class="price-option">
+                  <span>Até 5 páginas</span>
+                  <strong>R$ 90,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>Até 6 páginas</span>
+                  <strong>R$ 110,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>7 páginas ou mais</span>
+                  <strong>A combinar</strong>
+                </div>
+              </div>
+              <h5>Como funciona a criação?</h5>
+              <ul>
+                <li>Alinhamento inicial para entender a ideia, finalidade e expectativas do cliente.</li>
+                <li>Definição de cores, referências e identidade visual.</li>
+                <li>O cliente deverá fornecer as informações necessárias para a criação.</li>
+                <li>Sugestões e direcionamentos criativos poderão ser oferecidos durante o processo.</li>
+                <li>Desenvolvimento personalizado de acordo com a proposta de cada material.</li>
+              </ul>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>Os pacotes de 5 e 10 artes contemplam materiais individuais, não incluindo carrosséis.</li>
+                <li>Pequenos ajustes poderão ser realizados sem custo adicional.</li>
+                <li>Mudanças completas na proposta inicial ou solicitações de uma nova criação terão cobrança de R$ 35,00 por nova arte.</li>
+                <li>Novas criações de carrosséis serão orçadas conforme a quantidade de páginas e complexidade.</li>
+                <li>Caso o material seja destinado à impressão, as especificações de formato e tamanho deverão ser alinhadas previamente.</li>
+              </ul>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Design gráfico</span>
+              </figcaption>
+              <img
+                src="DG2.PNG"
+                alt="Imagem complementar de design gráfico"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="videos/pacote-07.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20em%20Design%20Gr%C3%A1fico%20e%20Materiais%20de%20Divulga%C3%A7%C3%A3o."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+    <!-- ===================================================
+         PACOTE 08
+    ==================================================== -->
+    <details class="package-card reveal">
+      <summary>
+        <div class="card-top">
+          <span class="card-number">08</span>
+          <span class="card-tag">BRANDING / IDENTITY</span>
+        </div>
+        <div class="card-title-area">
+          <h3>Criação de Logotipo e Identidade Visual</h3>
+          <span class="expand-icon">+</span>
+        </div>
+        <div class="card-image">
+          <img
+            src="8CI.PNG"
+            alt="Composição de identidade visual"
+            loading="lazy"
+          >
+        </div>
+        <div class="card-summary">
+          <p>
+            Construção de uma identidade visual personalizada para expressar
+            a essência, a personalidade e o profissionalismo da marca.
+          </p>
+          <span class="view-label">Ver pacote ↗</span>
+        </div>
+      </summary>
+      <div class="package-content">
+        <div class="package-content-inner">
+          <div class="package-detail">
+            <div class="package-description">
+              <p>
+                Desenvolvimento de logotipos e identidades visuais
+                personalizadas para empreendedores, profissionais e empresas
+                que desejam criar ou renovar a imagem da sua marca,
+                transmitindo sua essência, personalidade e profissionalismo.
+              </p>
+              <h4>01. Criação de logotipo</h4>
+              <p>
+                Ideal para quem precisa de uma logo personalizada para
+                representar seu negócio.
+              </p>
+              <h5>Opções e valores</h5>
+              <div class="price-grid">
+                <div class="price-option">
+                  <span>1 proposta de logotipo</span>
+                  <strong>R$ 20,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>2 propostas de logotipo</span>
+                  <strong>R$ 30,00</strong>
+                </div>
+                <div class="price-option">
+                  <span>Proposta adicional</span>
+                  <strong>R$ 10,00</strong>
+                </div>
+              </div>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Reunião inicial com o cliente para entender o negócio, suas preferências, referências e a ideia que deseja transmitir com a logo.</li>
+                <li>Desenvolvimento da quantidade de propostas escolhida.</li>
+                <li>Escolha de uma das propostas apresentadas.</li>
+                <li>1 ajuste simples na proposta selecionada.</li>
+                <li>Entrega do logotipo em PNG.</li>
+              </ul>
+              <h4>02. Identidade Visual Essencial</h4>
+              <div class="price-line">
+                <span>Projeto completo</span>
+                <strong>R$ 280,00</strong>
+              </div>
+              <p>
+                Ideal para quem está começando um negócio do zero ou deseja
+                construir uma identidade visual mais completa e profissional,
+                com os principais elementos necessários para apresentar sua
+                marca no ambiente digital.
+              </p>
+              <h5>O que está incluso</h5>
+              <ul>
+                <li>Reunião inicial de planejamento com o cliente para conhecer o negócio, entender seus objetivos, público, preferências e referências.</li>
+                <li>Até 2 propostas iniciais de logotipo.</li>
+                <li>Desenvolvimento do logotipo principal.</li>
+                <li>Variações da logo: circular, vertical e horizontal.</li>
+                <li>Paleta de cores personalizada.</li>
+                <li>Escolha de tipografias que representem a identidade da marca.</li>
+                <li>Elementos gráficos e símbolos personalizados.</li>
+                <li>Imagem de perfil adaptada a partir do logotipo.</li>
+                <li>5 capas personalizadas para os destaques do Instagram.</li>
+                <li>3 artes iniciais para publicações no Instagram, como bônus, com temas e conteúdos definidos em conjunto com o cliente.</li>
+                <li>Mini manual de identidade visual, com orientações básicas de aplicação da marca.</li>
+                <li>Arquivos finais em PNG, organizados e entregues por meio do Google Drive.</li>
+              </ul>
+              <h5>Orientação inicial para o Instagram</h5>
+              <p>
+                Além da criação visual, o cliente também recebe uma orientação
+                inicial para começar a apresentar sua marca no Instagram,
+                incluindo:
+              </p>
+              <ul>
+                <li>Auxílio na elaboração e organização da bio.</li>
+                <li>Orientação sobre a escolha de uma foto de perfil adequada à marca.</li>
+                <li>Sugestões iniciais de frequência e dias para realizar publicações.</li>
+                <li>Dicas para organizar a apresentação inicial do perfil.</li>
+              </ul>
+              <p>
+                Essa orientação tem como objetivo ajudar o cliente a dar os
+                primeiros passos com a marca no ambiente digital. Não inclui
+                administração do Instagram, publicações contínuas ou
+                gerenciamento de redes sociais.
+              </p>
+              <h5>Informações importantes</h5>
+              <ul>
+                <li>A reunião inicial faz parte dos dois serviços e é realizada em conjunto com o cliente antes do início da criação.</li>
+                <li>Todo o desenvolvimento é pensado de acordo com a proposta, as características e a personalidade de cada marca.</li>
+                <li>As propostas iniciais são conceitos para que o cliente escolha a direção visual que mais combina com seu negócio.</li>
+                <li>O pacote de Identidade Visual Essencial é um projeto de criação e estruturação inicial da marca, não um serviço de gerenciamento de redes sociais.</li>
+                <li>Serviços adicionais, como novas artes, publicações recorrentes e gerenciamento do Instagram, podem ser contratados separadamente.</li>
+                <li>A entrega é feita de forma digital, pelo Google Drive.</li>
+              </ul>
+            </div>
+            <figure class="detail-image">
+              <figcaption class="detail-image-label">
+                <span>02 / Imagem complementar</span>
+                <span>Branding & Identity</span>
+              </figcaption>
+              <img
+                src="8CI2.PNG"
+                alt="Imagem complementar de identidade visual"
+                loading="lazy"
+              >
+            </figure>
+            <div class="video-section">
+              <span class="video-label">03 / Vídeo de apresentação</span>
+              <video controls playsinline preload="metadata">
+                <source src="videos/pacote-08.mp4" type="video/mp4">
+                Seu navegador não conseguiu reproduzir este vídeo.
+              </video>
+            </div>
+            <a
+              class="whatsapp-cta"
+              href="https://wa.me/5511988869139?text=Ol%C3%A1%2C%20Camila!%20Tenho%20interesse%20em%20Cria%C3%A7%C3%A3o%20de%20Logotipo%20e%20Identidade%20Visual."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Conversar sobre este pacote <span>↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+<!-- =======================================================
+     MANIFESTO
+======================================================= -->
+<section class="container manifesto reveal">
+  <span class="eyebrow">
+    04 / A intenção por trás de cada entrega
+  </span>
+  <h2>
+    Não é sobre aparecer mais.
+    É sobre <em>comunicar melhor.</em>
+  </h2>
+</section>
+</main>
+<!-- =======================================================
+     RODAPÉ
+======================================================= -->
+<footer class="container footer">
+  <span>Camila Domingues · Serviços & Pacotes</span>
+  <span>Uma presença com intenção.</span>
+  <span>
+    Site feito para
+    <a href="https://camilasdomingues.github.io/Camila-Domingues-Creative-Studio/">
+      Mov.ByCamila ↗
+    </a>
+  </span>
+</footer>
+<!-- =======================================================
+     JAVASCRIPT
+     Somente animações e comportamento dos cards.
+     Os oito pacotes estão escritos individualmente no HTML.
+======================================================= -->
+<script>
+/* =========================================================
+   01. ANIMAÇÃO AO ROLAR A PÁGINA
+========================================================= */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
-
-    packages.forEach(item => {
-      packageList.appendChild(renderPackage(item));
+  });
+}, {
+  threshold: 0.12
+});
+document.querySelectorAll('.reveal').forEach(element => {
+  revealObserver.observe(element);
+});
+/* =========================================================
+   02. EXPANSÃO DOS CARDS
+   Permite manter apenas um pacote aberto por vez.
+========================================================= */
+const packageCards = document.querySelectorAll('.package-card');
+packageCards.forEach(card => {
+  card.addEventListener('toggle', () => {
+    if (!card.open) return;
+    packageCards.forEach(otherCard => {
+      if (otherCard !== card && otherCard.open) {
+        otherCard.open = false;
+      }
     });
-  </script>
+  });
+});
+/* =========================================================
+   03. FECHAR CARD AO CLICAR NOVAMENTE NO MESMO CARD
+   O comportamento padrão do <details> já faz isso.
+========================================================= */
+</script>
 </body>
 </html>
