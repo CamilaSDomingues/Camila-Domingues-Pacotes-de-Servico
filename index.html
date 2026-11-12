@@ -958,9 +958,14 @@ button {
    17. RODAPÉ
 ========================================================= */
 
+/* =========================================================
+   17. RODAPÉ
+========================================================= */
+
 .footer {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: center;
   gap: 20px;
   padding: 24px 0 38px;
   border-top: 1px solid var(--line);
@@ -968,6 +973,18 @@ button {
   font: 8px var(--mono);
   letter-spacing: .1em;
   text-transform: uppercase;
+}
+
+.footer span {
+  min-width: 0;
+}
+
+.footer span:nth-child(2) {
+  text-align: center;
+}
+
+.footer span:last-child {
+  text-align: right;
 }
 
 .footer a {
